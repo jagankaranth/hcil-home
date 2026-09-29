@@ -168,6 +168,10 @@ body{font-family:var(--bs-font-sans-serif)}
  .aw-img{left:var(--x);top:var(--y);width:clamp(6rem,11.2vw,10rem)}
 }/* footer */
 .ft{background:linear-gradient(180deg,#fff 0,#e7e6e3 6%,#c6bfb6 32%,#8a8379 56%,#4a4540 80%,#3a3632 100%);padding-top:clamp(3rem,6vw,5rem)}
+.ft{position:relative}
+.ft-credit{position:relative;z-index:2;margin:clamp(1.5rem,3.5vw,3rem) 0 0;text-align:center;font-size:var(--fs-sm);line-height:1.4;color:rgba(255,255,255,.85)}
+.ft-credit a{color:#fff;font-weight:600;text-decoration:underline;text-underline-offset:3px;transition:color .3s ease}
+.ft-credit a:hover,.ft-credit a:focus-visible{color:#7be0a6}
 .ft-in{padding:0 clamp(1rem,5.5vw,5rem)}
 .ft-cols{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem 1.5rem}
 .ft-cols h4{margin:0 0 clamp(1rem,2vw,1.5rem);font-size:var(--fs-lg);line-height:1.3;font-weight:500;color:var(--hc-green)}
@@ -181,7 +185,7 @@ body{font-family:var(--bs-font-sans-serif)}
 .ft-logos{display:flex;flex-direction:column;align-items:center;gap:clamp(1.25rem,3vw,2rem);margin-top:clamp(1.25rem,2.5vw,2rem)}
 .ft-logos img{display:block;height:clamp(2.25rem,4.6vw,5rem);width:auto;max-width:100%}
 .ft-div{display:none;width:1px;align-self:stretch;background:rgba(255,255,255,.4)}
-.ft-img{display:block;width:100%;height:auto;margin-top:clamp(1rem,3vw,2.5rem)}
+.ft-img{position:relative;z-index:1;display:block;width:100%;height:auto;margin-top:-3.5vw}
 @media (min-width:768px){
  .ft-cols{grid-template-columns:repeat(4,auto);justify-content:space-between}
  .ft-logos{flex-direction:row;justify-content:space-between}
@@ -524,6 +528,7 @@ textarea.enq-field{height:clamp(8rem,13vw,11.5rem);padding-top:.9rem;resize:vert
       <span class="ft-div" aria-hidden="true"></span>
       <img src="assets/zauri.svg" alt="Zuari Cement" width="339" height="80" loading="lazy">
     </div>
+    <p class="ft-credit">Designed and developed by <a href="https://rockpaperscissors.studio/" target="_blank" rel="noopener">Rock Paper Scissors Studio</a></p>
   </div>
   <img class="ft-img" src="assets/footer.webp" alt="" width="4320" height="702" loading="lazy">
 </footer>
