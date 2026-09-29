@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HeidelbergCement India – Built for Generations</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fustat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bs-font-sans-serif:Fustat,system-ui,sans-serif;--bs-body-color:#1c2422;--hc-green:#00843D;--hc-mint:#cfe9dc;--hc-card:#eef3f0;--bs-primary:var(--hc-green);--bs-primary-rgb:0,132,61}
+:root{--fs-display:clamp(2.5rem,1.5rem + 4.4vw,5rem);--fs-h2:clamp(1.75rem,1.3rem + 1.7vw,2.5rem);--fs-num:clamp(2rem,1.5rem + 2vw,3rem);--fs-lg:clamp(1rem,.94rem + .3vw,1.125rem);--fs-base:clamp(.9rem,.86rem + .2vw,1rem);--fs-sm:clamp(.8rem,.76rem + .16vw,.875rem);--fs-xs:clamp(.7rem,.67rem + .12vw,.75rem)}
+h2{font-size:var(--fs-h2)}
+body{font-family:var(--bs-font-sans-serif)}
+.text-green{color:var(--hc-green)}
+.btn-green{--bs-btn-bg:var(--hc-green);--bs-btn-border-color:var(--hc-green);--bs-btn-color:#fff;--bs-btn-hover-bg:#006b31;--bs-btn-hover-border-color:#006b31;--bs-btn-hover-color:#fff;--bs-btn-font-size:var(--fs-sm)}
+.btn-glass{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.4);color:#fff;backdrop-filter:blur(8px);font-size:var(--fs-sm)}
+.btn-glass:hover{background:rgba(255,255,255,.3);color:#fff}
+.ph{background:linear-gradient(135deg,#8d938c,#5b625c)}
+.bg-card-soft{background:var(--hc-card)}
+.small-xs{font-size:var(--fs-xs)}
+/* hero */
+.hero{position:relative;min-height:100vh;color:#fff;overflow:hidden;background:#6b6f68}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.hero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(rgba(0,0,0,.05) 40%,rgba(0,0,0,.35));pointer-events:none}
+.hero-nav{position:absolute;top:0;left:0;right:0;z-index:3;padding:20px 40px;background:rgba(0,0,0,.1);backdrop-filter:blur(25px);-webkit-backdrop-filter:blur(25px)}
+.hero-nav .navbar-brand img{height:32px;width:auto}
+.hero-nav .nav-link{font-size:var(--fs-base);color:#fff;padding:.4rem .2rem;background:linear-gradient(#fff,#fff) no-repeat left bottom/0 2px;transition:background-size .3s ease,opacity .3s ease}
+.hero-nav .nav-link:hover,.hero-nav .nav-link:focus-visible,.hero-nav .nav-link.show{background-size:100% 2px;color:#fff}
+.hero-nav .nav-link.active{background-size:100% 2px}
+.hero-nav .navbar-nav:hover .nav-link:not(:hover):not(.active){opacity:.7}
+.hero-nav .dropdown-toggle::after{transition:transform .3s ease}
+.hero-nav .dropdown-toggle.show::after{transform:rotate(180deg)}
+.hero-nav .dropdown-toggle::after{border:0;width:.6rem;height:.6rem;margin-left:.5rem;vertical-align:.1em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='white' stroke-width='1.3'%3E%3Cpath d='M1 4l5 5 5-5'/%3E%3C/svg%3E") center/contain no-repeat}
+.hero-nav .btn-contact{white-space:nowrap;border:1px solid #fff;color:#fff;border-radius:8px;padding:.75rem 1rem;font-size:var(--fs-sm);font-weight:500;line-height:1}
+.hero-nav .btn-contact:hover{background:#fff;color:#1c2422}
+.hero-content{position:relative;z-index:2;min-height:100vh;padding:120px 0 64px}
+.hero h1{font-size:var(--fs-display);letter-spacing:0;line-height:1;font-weight:700}
+.hero-content p{font-size:var(--fs-lg);max-width:720px}
+.btn-outline-hero{border:1px solid #fff;color:#fff;background:rgba(255,255,255,.08);border-radius:4px;padding:.7rem 1.6rem;font-size:var(--fs-base);line-height:1.5;font-weight:600}
+.btn-outline-hero:hover{background:#fff;color:#1c2422}
+/* stats */
+.stat-card{container-type:inline-size;position:relative;overflow:hidden;min-height:13rem;border-radius:24px;padding:clamp(1.5rem,1rem + 2vw,2.5rem);display:flex;flex-direction:column;background:linear-gradient(126.63deg,#F2F6F4 0%,#FFFFFF 100%);box-shadow:0 0 0 1px rgba(0,132,61,.04);cursor:default}
+.stat-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity .5s ease,transform .8s ease;z-index:0}
+.stat-card::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,0) 35%,rgba(0,0,0,0) 50%,rgba(0,0,0,.5)),rgba(0,0,0,.25);opacity:0;transition:opacity .5s ease}
+.stat-card>*:not(img){position:relative;z-index:2}
+.stat-card .num{white-space:nowrap;font-size:clamp(2.25rem,12cqw,3rem);line-height:1;font-weight:400;color:var(--hc-green);transition:color .4s ease}
+.stat-card .lbl{margin-top:clamp(1.5rem,1rem + 2vw,3rem);font-size:clamp(1.05rem,1rem + .15vw,1.125rem);line-height:1;font-weight:600;color:#000;transition:color .4s ease}
+.stat-card .desc{margin:12px 0 0;font-size:clamp(.95rem,.9rem + .1vw,1rem);line-height:1;font-weight:400;color:#4D4D4D;transition:color .4s ease}
+.stat-card:hover img,.stat-card:focus-visible img{opacity:1;transform:scale(1)}
+.stat-card:hover::after,.stat-card:focus-visible::after{opacity:1}
+.stat-card:hover .num,.stat-card:hover .lbl,.stat-card:hover .desc,.stat-card:focus-visible .num,.stat-card:focus-visible .lbl,.stat-card:focus-visible .desc{color:#fff}
+@media (min-width:768px){.stat-card{aspect-ratio:16/10}}
+@media (min-width:1200px){.stat-card{aspect-ratio:1/1}}
+.stat-card:focus-visible{outline:2px solid var(--hc-green);outline-offset:3px}
+.section-title{font-size:clamp(1.75rem,1rem + 2.7vw,3rem);line-height:1.25;font-weight:700;letter-spacing:0;color:#000;text-align:center}
+.section-desc{font-size:var(--fs-base);line-height:1.5;font-weight:400;letter-spacing:0;color:rgba(0,0,0,.7);text-align:center;max-width:60rem;margin:1.25rem auto 0}
+/* engineering banner */
+.eng{position:relative;overflow:hidden;width:100%;height:26rem;border-radius:0 0 clamp(4rem,12vw,12rem) 0;background:#cfe0ee}
+@media (min-width:768px){.eng{height:auto;aspect-ratio:1447/705}}
+.eng-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center bottom}
+.eng::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#fff 0%,rgba(255,255,255,0) 55%);pointer-events:none}
+.eng-title{position:relative;z-index:2;font-size:clamp(1.75rem,1rem + 2.7vw,3rem);line-height:1.25;font-weight:700;letter-spacing:0;color:#000;padding-top:clamp(2.5rem,6vw,5rem)}
+.btn-know{position:absolute;z-index:2;left:50%;bottom:clamp(1.5rem,5vw,4.5rem);transform:translateX(-50%);display:inline-flex;align-items:center;gap:.6rem;background:#fff;color:var(--hc-green);border:0;border-radius:8px;padding:.75rem 1.5rem;font-size:var(--fs-base);line-height:1.5;font-weight:600;text-decoration:none;white-space:nowrap;transition:background .3s ease,color .3s ease}
+.btn-know svg{transition:transform .3s ease}
+.btn-know:hover,.btn-know:focus-visible{background:var(--hc-green);color:#fff}
+.btn-know:hover svg,.btn-know:focus-visible svg{transform:translate(2px,-2px)}
+/* maps */
+.brand-map{display:block;width:100%;max-width:510px;height:auto;margin:0 auto}
+.brand-content{padding:clamp(1rem,2.5vw,2.5rem)}
+.brands-head{margin-bottom:clamp(3.5rem,9vw,7rem)}
+.brand-map{padding:clamp(0rem,3vw,3rem)}
+@media (max-width:991.98px){.brand-map{max-width:min(70vw,300px)}}
+.shimmer{position:relative;background:#e9edea}
+.shimmer::before{content:"";position:absolute;top:0;bottom:0;left:0;width:45%;z-index:2;background:linear-gradient(105deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.45) 50%,rgba(255,255,255,0) 100%);transform:translateX(-120%) skewX(-18deg);animation:sweep 4s ease-in-out infinite;pointer-events:none}
+.shimmer-img{opacity:0;transition:opacity .6s ease}
+.shimmer.is-loaded .shimmer-img{opacity:1}
+@keyframes sweep{0%{transform:translateX(-120%) skewX(-18deg)}55%,100%{transform:translateX(320%) skewX(-18deg)}}
+.brand-photo{display:block;width:100%;height:auto;aspect-ratio:1890/900;object-fit:cover}
+.brand-photo--mycem{overflow:hidden;border-radius:clamp(1rem,2vw,1.5rem) clamp(3rem,8vw,5rem) clamp(1rem,2vw,1.5rem) clamp(1rem,2vw,1.5rem)}
+.brand-photo--zuari .brand-photo{aspect-ratio:1827/900}
+.brand-photo--zuari{overflow:hidden;border-radius:clamp(3rem,8vw,5rem) clamp(1rem,2vw,1.5rem) clamp(1rem,2vw,1.5rem) clamp(1rem,2vw,1.5rem)}
+.brand-title{margin:clamp(1.5rem,3vw,2.5rem) 0 0;font-size:clamp(1.5rem,1.2rem + 1vw,1.75rem);line-height:1.2;font-weight:600;letter-spacing:-.18px;color:#000}
+.brand-text{margin:1rem 0 0;font-size:var(--fs-base);line-height:1.45;font-weight:500;letter-spacing:0;color:rgba(0,0,0,.7)}
+.btn-brand{display:inline-flex;align-items:center;gap:.6rem;margin-top:clamp(1.5rem,3vw,2rem);background:var(--hc-green);color:#fff;border-radius:8px;padding:.85rem 1.6rem;font-size:var(--fs-base);line-height:1.5;font-weight:600;text-decoration:none;transition:background .3s ease,box-shadow .3s ease,transform .3s ease}
+.btn-brand svg{transition:transform .3s ease}
+.btn-brand:hover,.btn-brand:focus-visible{background:#006b31;color:#fff;box-shadow:0 8px 20px rgba(0,132,61,.28);transform:translateY(-2px)}
+.btn-brand:hover svg,.btn-brand:focus-visible svg{transform:translate(3px,-3px)}
+.btn-brand:active{transform:translateY(0)}
+.map{aspect-ratio:1/1.05;max-width:420px;background:#e3e6e4;position:relative;clip-path:polygon(30% 0,60% 5%,75% 20%,100% 35%,85% 50%,70% 70%,55% 100%,42% 75%,30% 55%,10% 45%,15% 25%)}
+.map::after{content:"";position:absolute;inset:0;background:var(--hc-mint);clip-path:polygon(25% 20%,50% 15%,60% 35%,45% 55%,30% 50%)}
+.map.south::after{clip-path:polygon(40% 60%,60% 55%,55% 85%,48% 95%,40% 75%)}
+.brand-img{height:220px;border-radius:24px 24px 24px 0}
+/* journey */
+/* journey */
+.journey{background:#F2F6F4;padding-top:clamp(2.5rem,6vw,4rem);overflow:hidden}
+.journey-wrap{--j-gutter:clamp(1rem,5.5vw,5rem);width:100%}
+.j-tabs{display:flex;align-items:flex-end;position:relative;z-index:2;padding:0 var(--j-gutter)}
+.j-tab{flex:1 1 0;min-width:0;position:relative;border:0;background:linear-gradient(90deg,rgba(0,132,61,0) 0%,rgba(0,132,61,.08) 100%);color:var(--hc-green);height:clamp(3.25rem,5vw,4.5rem);padding:clamp(.75rem,1.4vw,1.25rem) clamp(.5rem,2.8vw,2.5rem);gap:clamp(.75rem,1.4vw,1.25rem);border-radius:clamp(1.25rem,3vw,2.5rem) clamp(1.25rem,3vw,2.5rem) 0 .5rem;font-size:clamp(1.25rem,1rem + 1.2vw,2.5rem);line-height:1;font-weight:400;display:flex;align-items:center;justify-content:center;white-space:nowrap;transition:flex-grow .45s ease,background .3s ease}
+.j-tab:hover{background:linear-gradient(90deg,rgba(0,132,61,.04) 0%,rgba(0,132,61,.14) 100%)}
+.j-tab .j-label{display:none;margin-left:.6rem;font-size:clamp(.875rem,.7rem + .8vw,1.5rem);line-height:1.2;align-self:center;padding-top:.3em}
+.j-tab.active{flex-grow:3.1;background:#fff;box-shadow:0 -8px 8px 0 rgba(0,0,0,.04);border-radius:clamp(1.25rem,3vw,2.5rem) clamp(1.25rem,3vw,2.5rem) 0 0;justify-content:flex-start;padding-left:clamp(.75rem,3.2vw,2.6rem);z-index:1}
+.j-tab.active .j-label{display:inline}
+.j-tab.active::before,.j-tab.active::after{content:"";position:absolute;bottom:0;width:clamp(.75rem,1.6vw,1.25rem);height:clamp(.75rem,1.6vw,1.25rem);pointer-events:none}
+.j-tab.active::before{left:calc(-1 * clamp(.75rem,1.6vw,1.25rem));background:radial-gradient(circle at 0 0,transparent 71%,#fff 72%)}
+.j-tab.active::after{right:calc(-1 * clamp(.75rem,1.6vw,1.25rem));background:radial-gradient(circle at 100% 0,transparent 71%,#fff 72%)}
+.j-tab:focus-visible{outline:2px solid var(--hc-green);outline-offset:-2px}
+@media (max-width:575.98px){
+ .j-tab.active{flex-grow:4;padding-left:.75rem;padding-right:.25rem}
+ .j-tab .j-label{margin-left:.35rem;font-size:.8rem;overflow:hidden;text-overflow:ellipsis}
+ .j-tab{padding-left:.15rem;padding-right:.15rem}
+}
+.j-panel{background:linear-gradient(180deg,#fff 0,#F2F6F4 22%);border-radius:clamp(1rem,2.5vw,2rem) clamp(1rem,2.5vw,2rem) 0 0;padding:clamp(2rem,5vw,4.5rem) var(--j-gutter) clamp(2rem,5vw,4rem)}
+.j-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;align-items:start}
+.j-title{margin:0;font-size:clamp(1.75rem,1.2rem + 1.6vw,2.5rem);line-height:1.3;font-weight:700;color:#000;letter-spacing:0}
+.j-desc{margin:0;font-size:var(--fs-base);line-height:1.5;font-weight:400;color:#000;max-width:20rem}
+.j-media{position:relative;min-height:clamp(15rem,40vw,28rem);display:flex;align-items:center;justify-content:center}
+.j-media::before{content:"";position:absolute;left:50%;bottom:4%;width:90%;height:45%;transform:translateX(-50%);background:radial-gradient(ellipse at center,rgba(0,132,61,.12),transparent 70%);pointer-events:none}
+.j-video{position:relative;max-width:100%;max-height:28rem;width:auto;height:auto;object-fit:contain;opacity:0;transition:opacity .6s ease}
+.j-video.is-ready{opacity:1}
+@media (min-width:992px){
+ .j-grid{grid-template-columns:1fr 1.7fr 1fr;gap:1.5rem;min-height:26rem}
+ .j-desc{align-self:end;justify-self:end}
+}
+
+/* tiles */
+/* carbon carousel */
+.carbon{padding:clamp(4rem,9vw,7rem) var(--c-gutter);--c-gutter:clamp(1rem,5.5vw,5rem)}
+.c-row{display:flex;flex-direction:column;gap:12px;margin-top:clamp(2.5rem,5vw,4rem)}
+.c-card{position:relative;overflow:hidden;isolation:isolate;border-radius:16px;background:#F2F6F4;height:5.5rem;cursor:pointer;color:#00A35F;transition:height .6s cubic-bezier(.4,0,.2,1),flex-grow .6s cubic-bezier(.4,0,.2,1),background .3s ease;outline-offset:3px}
+.c-card:hover:not(.is-active){background:#e9f0ec}
+.c-card:focus-visible{outline:2px solid var(--hc-green)}
+.c-card.is-active{height:24rem;cursor:default}
+.c-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.05);transition:opacity .6s ease,transform 1.2s ease;z-index:-1}
+.c-card.is-active .c-img{opacity:1;transform:scale(1)}
+.c-icon{position:absolute;top:clamp(1rem,2vw,1.75rem);left:clamp(1rem,2vw,1.75rem);width:clamp(1.75rem,2.4vw,2.125rem);height:clamp(1.75rem,2.4vw,2.125rem);background:currentColor;-webkit-mask:var(--icon) center/contain no-repeat;mask:var(--icon) center/contain no-repeat;transition:color .4s ease}
+.c-card.is-active .c-icon{color:#fff}
+.c-body{position:absolute;left:0;right:0;bottom:0;padding:clamp(1rem,2vw,1.75rem);transition:background .5s ease,color .4s ease}
+.c-title{margin:0;font-size:clamp(1rem,.9rem + .4vw,1.25rem);line-height:1.45;font-weight:500;color:inherit}
+.c-desc{margin:0;max-height:0;overflow:hidden;opacity:0;font-size:var(--fs-base);line-height:1.5;font-weight:400;color:#fff;transition:max-height .5s ease,opacity .4s ease,margin .4s ease}
+.c-card.is-active .c-body{color:#fff;background:linear-gradient(180deg,rgba(60,40,25,.15),rgba(60,40,25,.55));-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)}
+.c-card.is-active .c-desc{max-height:12rem;opacity:.92;margin-top:.5rem;transition-delay:.15s}
+.c-progress{position:absolute;left:0;bottom:0;height:4px;width:0;background:#00A35F;z-index:2;opacity:0}
+.c-card.is-active .c-progress{opacity:1;animation:c-fill var(--c-dur,6s) linear forwards}
+.c-row.is-paused .c-card.is-active .c-progress{animation-play-state:paused}
+@keyframes c-fill{from{width:0}to{width:100%}}
+@media (min-width:992px){
+ .c-row{flex-direction:row;height:clamp(22rem,29vw,26rem)}
+ .c-card,.c-card.is-active{height:auto;flex:1 1 0}
+ .c-card.is-active{flex-grow:2.9}
+ .c-body{bottom:0}
+ .c-card:not(.is-active) .c-body{padding-top:0}
+}
+@media (max-width:991.98px){
+ .c-card:not(.is-active) .c-title{position:absolute;left:calc(clamp(1rem,2vw,1.75rem) + 3.5rem);top:50%;transform:translateY(-50%)}
+ .c-card:not(.is-active) .c-icon{top:50%;transform:translateY(-50%)}
+ .c-card:not(.is-active) .c-body{position:static}
+}
+/* awards (scroll-pinned) */
+.awards{position:relative;height:340vh}
+.aw-stick{position:sticky;top:0;height:100vh;min-height:34rem;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.aw-field{position:absolute;inset:12% 4%;pointer-events:none}
+.aw-img{position:absolute;left:var(--mx);top:var(--my);width:clamp(4.5rem,22vw,6rem);height:auto;aspect-ratio:1;border-radius:12px;object-fit:cover;box-shadow:0 10px 30px rgba(0,0,0,.08);will-change:transform,opacity}
+.aw-text{position:relative;z-index:2;text-align:center;max-width:44rem;padding:0 1.5rem;will-change:transform,opacity}
+.aw-text .section-desc{max-width:38rem}
+.aw-text .btn-brand{margin-top:clamp(1.5rem,3vw,2.5rem)}
+@media (min-width:768px){
+ .aw-field{inset:10% 3%}
+ .aw-img{left:var(--x);top:var(--y);width:clamp(6rem,11.2vw,10rem)}
+}/* footer */
+.ft{background:linear-gradient(180deg,#fff 0,#e7e6e3 6%,#c6bfb6 32%,#8a8379 56%,#4a4540 80%,#3a3632 100%);padding-top:clamp(3rem,6vw,5rem)}
+.ft-in{padding:0 clamp(1rem,5.5vw,5rem)}
+.ft-cols{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem 1.5rem}
+.ft-cols h4{margin:0 0 clamp(1rem,2vw,1.5rem);font-size:var(--fs-lg);line-height:1.3;font-weight:500;color:var(--hc-green)}
+.ft-cols ul{list-style:none;margin:0;padding:0;display:grid;gap:clamp(.75rem,1.6vw,1.25rem)}
+.ft-cols a{font-size:var(--fs-base);line-height:1.3;color:#000;text-decoration:none;background:linear-gradient(currentColor,currentColor) no-repeat left bottom/0 1px;transition:background-size .3s ease,color .3s ease}
+.ft-cols a:hover,.ft-cols a:focus-visible{color:var(--hc-green);background-size:100% 1px}
+.ft-social{display:flex;justify-content:flex-end;gap:clamp(.75rem,1.4vw,1rem);margin-top:clamp(2.5rem,8vw,7.5rem)}
+.ft-social a{display:grid;place-items:center;width:clamp(2.5rem,3.4vw,2.875rem);aspect-ratio:1;border-radius:6px;background:var(--hc-green);color:#fff;transition:background .3s ease,transform .3s ease}
+.ft-social a:hover,.ft-social a:focus-visible{background:#006b31;transform:translateY(-2px)}
+.ft-social svg{width:55%;height:auto}
+.ft-logos{display:flex;flex-direction:column;align-items:center;gap:clamp(1.25rem,3vw,2rem);margin-top:clamp(1.25rem,2.5vw,2rem)}
+.ft-logos img{display:block;height:clamp(2.25rem,4.6vw,5rem);width:auto;max-width:100%}
+.ft-div{display:none;width:1px;align-self:stretch;background:rgba(255,255,255,.4)}
+.ft-img{display:block;width:100%;height:auto;margin-top:clamp(1rem,3vw,2.5rem)}
+@media (min-width:768px){
+ .ft-cols{grid-template-columns:repeat(4,auto);justify-content:space-between}
+ .ft-logos{flex-direction:row;justify-content:space-between}
+ .ft-div{display:block}
+}
+
+/* enquiry */
+/* enquiry */
+.enq{padding:clamp(4rem,10vw,9rem) clamp(1rem,5.5vw,5rem) clamp(3rem,6vw,5rem)}
+.enq-grid{display:grid;grid-template-columns:1fr;gap:clamp(2rem,5vw,3rem)}
+.enq-title{margin:0;font-size:clamp(1.75rem,1rem + 2.7vw,3rem);line-height:1.25;font-weight:700;color:#000}
+.enq-desc{margin:clamp(1rem,2vw,1.5rem) 0 0;font-size:var(--fs-lg);line-height:1.5;font-weight:400;color:#000;max-width:36rem}
+.help-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(.75rem,1.4vw,1rem);margin-top:clamp(2rem,5vw,4rem)}
+.help-card{display:flex;flex-direction:column;justify-content:space-between;gap:clamp(1rem,2vw,1.5rem);min-height:0;padding:clamp(1rem,2.2vw,2rem);background:#fff;border:1px solid #D8E3DD;border-radius:16px;text-decoration:none;color:inherit;transition:background .3s ease,border-color .3s ease}
+.help-card:hover,.help-card:focus-visible{background:#EAF4EE;border-color:#BFDCCB}
+.help-card img{transition:transform .3s ease}
+.help-card:hover img,.help-card:focus-visible img{transform:translate(2px,2px)}
+.help-card img{width:clamp(1.5rem,2.2vw,2rem);height:auto}
+.help-title{display:block;font-size:clamp(1rem,.9rem + .5vw,1.25rem);line-height:1.4;font-weight:500;color:var(--hc-green)}
+.help-sub{display:block;margin-top:.35rem;font-size:var(--fs-base);line-height:1.45;color:rgba(0,0,0,.75)}
+.enq-form{position:relative;display:flex;flex-direction:column;gap:clamp(.75rem,1.2vw,1.375rem);padding:clamp(1.25rem,2.9vw,3.25rem);border-radius:16px clamp(4rem,11.5vw,14rem) 16px 16px;color:#fff;background:linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)),#6b6f68 url(assets/enquiry.webp) center/cover no-repeat;overflow:hidden}
+.enq-form h3{margin:0 0 clamp(.5rem,1.4vw,1.25rem);font-size:clamp(1.5rem,1.1rem + 1.2vw,2rem);line-height:1.3;font-weight:500}
+.enq-field{width:100%;border:0;border-radius:8px;background:#fff;color:#000;padding:0 clamp(1rem,1.7vw,2rem);height:clamp(2.75rem,4vw,3.25rem);font:inherit;font-size:var(--fs-lg);outline:0;box-shadow:0 0 0 0 rgba(0,132,61,0);transition:box-shadow .25s ease}
+.enq-field::placeholder{color:#6f6f6f}
+.enq-field:focus{box-shadow:0 0 0 3px rgba(0,163,95,.55)}
+select.enq-field{appearance:none;-webkit-appearance:none;cursor:pointer;color:#6f6f6f;padding-right:3rem;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23000' stroke-width='1.4'%3E%3Cpath d='M2 5l6 6 6-6'/%3E%3C/svg%3E") right clamp(1rem,1.7vw,2rem) center/1.25rem no-repeat}
+select.enq-field:valid{color:#000}
+textarea.enq-field{height:clamp(8rem,13vw,11.5rem);padding-top:.9rem;resize:vertical}
+.enq-legal{margin:clamp(.5rem,1.2vw,1rem) 0 0;font-size:var(--fs-lg);line-height:1.5;color:#fff}
+.enq-legal a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.enq-submit{margin-top:clamp(.5rem,1.2vw,1rem);border:0;border-radius:8px;background:var(--hc-green);color:#fff;height:clamp(2.75rem,4vw,3.25rem);font:inherit;font-size:clamp(1rem,.9rem + .5vw,1.25rem);font-weight:500;cursor:pointer;transition:background .3s ease,transform .2s ease}
+.enq-submit:hover,.enq-submit:focus-visible{background:#006b31}
+.enq-submit:active{transform:scale(.99)}
+@media (min-width:992px){.enq-grid{grid-template-columns:1.35fr 1fr;align-items:start}}
+/* footer */
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<header class="hero">
+  <video class="hero-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+    <source src="assets/bird-hero.mp4" type="video/mp4">
+  </video>
+  <nav class="hero-nav navbar navbar-expand-xl navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><img src="assets/logo.svg" alt="HeidelbergCement India" width="177" height="32"></a>
+      <div class="order-xl-3 ms-auto ms-xl-0 d-flex align-items-center gap-3"><a class="btn btn-contact" href="#enquiry">Contact Us</a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button></div>
+      <div class="collapse navbar-collapse order-3 order-xl-2" id="mainNav">
+        <ul class="navbar-nav mx-auto gap-xl-3">
+          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Company</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Sustainability</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">HCIL</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">ZCIL</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Investors</a>
+            <ul class="dropdown-menu"><li><a class="dropdown-item" href="#">Financials</a></li><li><a class="dropdown-item" href="#">Corporate announcements</a></li><li><a class="dropdown-item" href="#">Board meetings</a></li></ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="#">Tools</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Media</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Careers</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="hero-content container d-flex flex-column justify-content-end align-items-center text-center">
+    <h1>Built for Generations</h1>
+    <p class="mx-auto mt-3 mb-5">Every home begins with a promise. At Heidelberg Cement, we transform earth into enduring foundations that protect families, communities and dreams for generations.</p>
+    <a class="btn btn-outline-hero d-inline-flex align-items-center gap-2" href="#stats">Explore Journey <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M9 2v14M3 10l6 6 6-6"/></svg></a>
+  </div>
+</header>
+
+<main>
+<!-- Stats -->
+<section class="container py-5 my-lg-4" id="stats">
+  <div class="row g-3">
+    <div class="col-12 col-md-6 col-xl-3">
+      <article class="stat-card h-100" tabindex="0">
+        <img src="assets/legacy.webp" alt="" width="610" height="610" loading="lazy">
+        <div class="num">150+</div>
+        <div class="lbl">Years of expertise</div>
+        <p class="desc">German cement legacy since 1873</p>
+      </article>
+    </div>
+    <div class="col-12 col-md-6 col-xl-3">
+      <article class="stat-card h-100" tabindex="0">
+        <img src="assets/manufactor.webp" alt="" width="610" height="610" loading="lazy">
+        <div class="num">7</div>
+        <div class="lbl">Manufacturing units</div>
+        <p class="desc">Across our operations in India</p>
+      </article>
+    </div>
+    <div class="col-12 col-md-6 col-xl-3">
+      <article class="stat-card h-100" tabindex="0">
+        <img src="assets/network.webp" alt="" width="610" height="610" loading="lazy">
+        <div class="num">10,000+</div>
+        <div class="lbl">Dealers</div>
+        <p class="desc">A strong distribution network across India</p>
+      </article>
+    </div>
+    <div class="col-12 col-md-6 col-xl-3">
+      <article class="stat-card h-100" tabindex="0">
+        <img src="assets/production.webp" alt="" width="610" height="610" loading="lazy">
+        <div class="num">12.6 MnT</div>
+        <div class="lbl">Cement capacity</div>
+        <p class="desc">Annual production capacity across India</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Engineering banner -->
+<section class="eng text-center">
+  <img class="eng-img" src="assets/plant.webp" alt="HeidelbergCement plant with cement silos" width="1447" height="705" loading="lazy">
+  <h2 class="eng-title px-3">From German Engineering<br class="d-none d-md-inline"> to Indian Infrastructure.</h2>
+  <a class="btn-know" href="#">Know more <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 14L14 4M6 4h8v8"/></svg></a>
+</section>
+
+<!-- Brands -->
+<section class="container py-5 my-lg-5">
+  <div class="text-center brands-head">
+    <h2 class="section-title">Two brands. Different markets.<br class="d-none d-md-inline"> One engineering ethos.</h2>
+    <p class="section-desc">Meet Mycem and Zuari, two cement brands from Heidelberg Materials India, each with a distinct range for the way people build.</p>
+  </div>
+
+  <div class="row align-items-center gx-lg-5 gy-5 mb-5">
+    <div class="col-lg-5">
+      <img class="brand-map" src="assets/north-map.svg" alt="Map of India highlighting the northern markets served by Mycem" width="510" height="553" loading="lazy">
+    </div>
+    <div class="col-lg-7">
+     <div class="brand-content">
+      <div class="shimmer brand-photo-wrap brand-photo--mycem">
+        <img class="brand-photo shimmer-img" src="assets/Mycem.webp" alt="Mycem cement bags" width="1890" height="900" loading="lazy">
+      </div>
+      <h3 class="brand-title">Mycem Cement</h3>
+      <p class="brand-text">Built around the family building their own home, once. Power Shield has finer particles that restrict water moving through the pores, so walls resist seepage and efflorescence. Primo comes in a tamper-proof pack that holds quality past the point Indian practice asks for a retest.</p>
+      <a class="btn-brand" href="#">Explore Mycem <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 14L14 4M6 4h8v8"/></svg></a>
+     </div>
+    </div>
+  </div>
+
+  <div class="row align-items-center gx-lg-5 gy-5">
+    <div class="col-lg-5 order-lg-2">
+      <img class="brand-map" src="assets/south-map.svg" alt="Map of India highlighting the southern markets served by Zuari" width="541" height="579" loading="lazy">
+    </div>
+    <div class="col-lg-7 order-lg-1">
+     <div class="brand-content">
+      <div class="shimmer brand-photo-wrap brand-photo--zuari">
+        <img class="brand-photo shimmer-img" src="assets/Zuari.webp" alt="Zuari cement bags" width="1827" height="900" loading="lazy">
+      </div>
+      <h3 class="brand-title">Zuari Cement</h3>
+      <p class="brand-text">Six cements across the grades. Zuari OPC and Zuari PPC for everyday building, Zuari PSC for foundations and lasting ground, Zuari Power Shield against seepage, Zuari Primo at Grade 53 for high-rise work, and Zuari Primo Green went for lower carbon.</p>
+      <a class="btn-brand" href="#">Explore Zuari <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 14L14 4M6 4h8v8"/></svg></a>
+     </div>
+    </div>
+  </div>
+</section>
+
+<!-- Journey -->
+<section class="journey" id="journey">
+  <div class="journey-wrap">
+    <div class="j-tabs" role="tablist" aria-label="Cement journey steps">
+      <button class="j-tab active" id="jt01" type="button" role="tab" data-bs-toggle="tab" data-bs-target="#jp01" aria-controls="jp01" aria-selected="true"><span class="j-num">01</span><span class="j-label">Sourcing</span></button>
+      <button class="j-tab" id="jt02" type="button" role="tab" data-bs-toggle="tab" data-bs-target="#jp02" aria-controls="jp02" aria-selected="false"><span class="j-num">02</span><span class="j-label">Crushing</span></button>
+      <button class="j-tab" id="jt03" type="button" role="tab" data-bs-toggle="tab" data-bs-target="#jp03" aria-controls="jp03" aria-selected="false"><span class="j-num">03</span><span class="j-label">Clinkering</span></button>
+      <button class="j-tab" id="jt04" type="button" role="tab" data-bs-toggle="tab" data-bs-target="#jp04" aria-controls="jp04" aria-selected="false"><span class="j-num">04</span><span class="j-label">Grinding</span></button>
+      <button class="j-tab" id="jt05" type="button" role="tab" data-bs-toggle="tab" data-bs-target="#jp05" aria-controls="jp05" aria-selected="false"><span class="j-num">05</span><span class="j-label">Storage</span></button>
+      <button class="j-tab" id="jt06" type="button" role="tab" data-bs-toggle="tab" data-bs-target="#jp06" aria-controls="jp06" aria-selected="false"><span class="j-num">06</span><span class="j-label">Dispatch</span></button>
+    </div>
+    <div class="tab-content j-panel">
+      <div class="tab-pane fade show active" id="jp01" role="tabpanel" aria-labelledby="jt01" tabindex="0">
+        <div class="j-grid">
+          <h3 class="j-title">Every Strong<br>foundation<br>begins here</h3>
+          <div class="j-media" data-video="assets/process-01.mp4" role="img" aria-label="Sourcing illustration"></div>
+          <p class="j-desc">Carefully selected limestone leaves the quarry face. Sourced responsibly, every journey begins with nature's finest raw material.</p>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="jp02" role="tabpanel" aria-labelledby="jt02" tabindex="0">
+        <div class="j-grid">
+          <h3 class="j-title">Precision in<br>every fragment</h3>
+          <div class="j-media" data-video="assets/process-02.mp4" role="img" aria-label="Crushing illustration"></div>
+          <p class="j-desc">Crated limestone rides to the crusher, where raw stone becomes finely processed feed for a process engineered around consistency.</p>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="jp03" role="tabpanel" aria-labelledby="jt03" tabindex="0">
+        <div class="j-grid">
+          <h3 class="j-title">Where earth<br>meets fire</h3>
+          <div class="j-media" data-video="assets/process-03.mp4" role="img" aria-label="Clinkering illustration"></div>
+          <p class="j-desc">Inside high-efficiency kilns, intense heat transforms blended raw material into high strength clinker, the heart of premium cement.</p>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="jp04" role="tabpanel" aria-labelledby="jt04" tabindex="0">
+        <div class="j-grid">
+          <h3 class="j-title">Where Strength<br>Takes Form</h3>
+          <div class="j-media" data-video="assets/process-04.mp4" role="img" aria-label="Grinding illustration"></div>
+          <p class="j-desc">Clinker meets gypsum and carefully selected additives in high-efficiency grinding mills. Finely ground and precisely controlled, it becomes the cement that builds what lasts.</p>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="jp05" role="tabpanel" aria-labelledby="jt05" tabindex="0">
+        <div class="j-grid">
+          <h3 class="j-title">Stored with<br>precision.</h3>
+          <div class="j-media" data-video="assets/process-05.mp4" role="img" aria-label="Storage illustration"></div>
+          <p class="j-desc">Engineered storage preserves quality and ensures every batch keeps the consistency professionals trust.</p>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="jp06" role="tabpanel" aria-labelledby="jt06" tabindex="0">
+        <div class="j-grid">
+          <h3 class="j-title">Ready to build<br>tomorrow</h3>
+          <div class="j-media" data-video="assets/process-06.mp4" role="img" aria-label="Dispatch illustration"></div>
+          <p class="j-desc">From our plants to your projects, every bag carries decades of engineering excellence.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Carbon -->
+<section class="carbon" id="carbon">
+  <h2 class="section-title">Building India with less carbon<br class="d-none d-md-inline"> in every bag of cement.</h2>
+  <p class="section-desc">Cement is hard to decarbonise. We're not using that as an excuse. There are only three levers that genuinely move the carbon in a bag, and we pull all three.</p>
+  <div class="c-row" id="carbonRow">
+      <article class="c-card is-active" role="button" tabindex="0" aria-expanded="true" aria-label="What goes into the blend">
+        <img class="c-img" src="assets/sustainability-01.webp" alt="" width="1200" height="800" loading="lazy">
+        <span class="c-icon" style="--icon:url(assets/Flask.svg)" aria-hidden="true"></span>
+        <div class="c-body">
+          <h3 class="c-title">What goes into the blend</h3>
+          <p class="c-desc">Composite cement now carries 41% clinker where PPC carries 61%, and it is roughly a quarter of everything we sell. Less clinker is less limestone burnt, and burning limestone is where most of cement's carbon comes from.</p>
+        </div>
+        <span class="c-progress" aria-hidden="true"></span>
+      </article>
+      <article class="c-card" role="button" tabindex="0" aria-expanded="false" aria-label="What we burn">
+        <img class="c-img" src="assets/sustainability-02.webp" alt="" width="1200" height="800" loading="lazy">
+        <span class="c-icon" style="--icon:url(assets/Campfire.svg)" aria-hidden="true"></span>
+        <div class="c-body">
+          <h3 class="c-title">What we burn</h3>
+          <p class="c-desc">10.63% of our kiln fuel is now alternative fuel rather than coal, up from 8.1%. Waste heat from cooling is recovered and put back to work, 67,040 MWh of it last year.</p>
+        </div>
+        <span class="c-progress" aria-hidden="true"></span>
+      </article>
+      <article class="c-card" role="button" tabindex="0" aria-expanded="false" aria-label="Where the power comes from">
+        <img class="c-img" src="assets/sustainability-03.webp" alt="" width="1200" height="800" loading="lazy">
+        <span class="c-icon" style="--icon:url(assets/Lightning.svg)" aria-hidden="true"></span>
+        <div class="c-body">
+          <h3 class="c-title">Where the power comes from</h3>
+          <p class="c-desc">43% of our electricity comes from solar, wind and recovered heat, including a 5.5 MW wind and solar hybrid commissioned in central India last year.</p>
+        </div>
+        <span class="c-progress" aria-hidden="true"></span>
+      </article>
+      <article class="c-card" role="button" tabindex="0" aria-expanded="false" aria-label="Beyond the plant boundary">
+        <img class="c-img" src="assets/sustainability-04.webp" alt="" width="1200" height="800" loading="lazy">
+        <span class="c-icon" style="--icon:url(assets/NuclearPlant.svg)" aria-hidden="true"></span>
+        <div class="c-body">
+          <h3 class="c-title">Beyond the plant boundary</h3>
+          <p class="c-desc">Afforestation at Damoh, water recharge across our mining sites, and Five Star rated mines at Patharia. Net zero by 2050, on targets validated by the Science Based Targets initiative.</p>
+        </div>
+        <span class="c-progress" aria-hidden="true"></span>
+      </article>
+  </div>
+</section>
+
+<!-- Awards -->
+<section class="awards" id="awards">
+  <div class="aw-stick">
+    <div class="aw-field" aria-hidden="true">
+      <img class="aw-img" src="assets/award-01.webp" alt="" width="320" height="320" decoding="async" style="--x:13%;--y:0%;--mx:4%;--my:2%">
+      <img class="aw-img" src="assets/award-02.webp" alt="" width="320" height="320" decoding="async" style="--x:4%;--y:48%;--mx:36%;--my:84%">
+      <img class="aw-img" src="assets/award-03.webp" alt="" width="320" height="320" decoding="async" style="--x:21%;--y:71%;--mx:6%;--my:76%">
+      <img class="aw-img" src="assets/award-04.webp" alt="" width="320" height="320" decoding="async" style="--x:72%;--y:0%;--mx:68%;--my:4%">
+      <img class="aw-img" src="assets/award-05.webp" alt="" width="320" height="320" decoding="async" style="--x:86%;--y:31%;--mx:36%;--my:14%">
+      <img class="aw-img" src="assets/award-06.webp" alt="" width="320" height="320" decoding="async" style="--x:69%;--y:66%;--mx:66%;--my:74%">
+    </div>
+    <div class="aw-text">
+      <h2 class="section-title">Recognized for the work<br class="d-none d-md-inline"> that moves us forward.</h2>
+      <p class="section-desc">From manufacturing excellence to sustainability and people, our work continues to earn recognition across the industry.</p>
+      <a class="btn-brand" href="#">Explore our awards <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 14L14 4M6 4h8v8"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- Enquiry -->
+<section class="enq" id="enquiry">
+  <div class="enq-grid">
+    <div>
+      <h2 class="enq-title">Let’s build what’s<br>next, together</h2>
+      <p class="enq-desc">Whether you’re planning a home, working on a project or need technical support, we’re here to help you find the right solution.</p>
+      <div class="help-grid">
+        <a class="help-card" href="#">
+          <img src="assets/whatsapp.svg" alt="" width="32" height="32" loading="lazy">
+          <span><span class="help-title">Chat on Whatsapp</span><span class="help-sub">Fastest for home builders</span></span>
+        </a>
+        <a class="help-card" href="#">
+          <img src="assets/dealer.svg" alt="" width="32" height="32" loading="lazy">
+          <span><span class="help-title">Find a dealer</span><span class="help-sub">Fastest for home builders</span></span>
+        </a>
+        <a class="help-card" href="#">
+          <img src="assets/bulk.svg" alt="" width="32" height="32" loading="lazy">
+          <span><span class="help-title">Bulk and projects</span><span class="help-sub">Fastest for home builders</span></span>
+        </a>
+        <a class="help-card" href="#">
+          <img src="assets/technical.svg" alt="" width="32" height="32" loading="lazy">
+          <span><span class="help-title">Technical services</span><span class="help-sub">Fastest for home builders</span></span>
+        </a>
+      </div>
+    </div>
+    <form class="enq-form" onsubmit="return false">
+      <h3>Send an enquiry</h3>
+      <input class="enq-field" type="text" name="name" placeholder="Name" aria-label="Name" autocomplete="name" required>
+      <input class="enq-field" type="tel" name="mobile" placeholder="Mobile Number" aria-label="Mobile number" autocomplete="tel" inputmode="tel" required>
+      <select class="enq-field" name="location" aria-label="Where are you building?" required>
+        <option value="" disabled selected hidden>Where are you building?</option>
+        <option>Rajasthan</option><option>Uttar Pradesh</option><option>Madhya Pradesh</option><option>Gujarat</option><option>Maharashtra</option><option>Karnataka</option><option>Goa</option><option>Other</option>
+      </select>
+      <textarea class="enq-field" name="message" placeholder="Tell us about what you want to build" aria-label="Tell us about what you want to build"></textarea>
+      <p class="enq-legal">The details you provide are collected and processed in accordance with the Digital Personal Data Protection Act, 2023.<br>See our <a href="#">privacy notice</a></p>
+      <button class="enq-submit" type="submit">Send enquiry</button>
+    </form>
+  </div>
+</section>
+</main>
+
+<!-- Footer -->
+<footer class="ft">
+  <div class="ft-in">
+    <div class="ft-cols">
+      <nav aria-label="Brands"><h4>Brands</h4><ul><li><a href="#">Mycem Cement</a></li><li><a href="#">Zuari Cement</a></li><li><a href="#">Find a dealer</a></li><li><a href="#">Cement calculator</a></li></ul></nav>
+      <nav aria-label="Company"><h4>Company</h4><ul><li><a href="#">About HCIL</a></li><li><a href="#">German quality</a></li><li><a href="#">Heidelberg Materials legacy</a></li><li><a href="#">Leadership</a></li><li><a href="#">Careers</a></li></ul></nav>
+      <nav aria-label="Responsibility"><h4>Responsibility</h4><ul><li><a href="#">Sustainability</a></li><li><a href="#">CSR</a></li><li><a href="#">Safety</a></li><li><a href="#">BRSR and reports</a></li><li><a href="#">Blogs and articles</a></li></ul></nav>
+      <nav aria-label="Investors"><h4>Investors</h4><ul><li><a href="#">Financials</a></li><li><a href="#">Corporate announcements</a></li><li><a href="#">Board meetings</a></li><li><a href="#">Investor information</a></li><li><a href="#">Investor contacts</a></li></ul></nav>
+    </div>
+    <div class="ft-social">
+      <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6" fill="currentColor"/></svg></a>
+      <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 11v5M8 8v.01M12 16v-5M12 13c0-1.7 1-2 2-2s2 .8 2 2.3V16"/></svg></a>
+      <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.5v5l4.5-2.5z"/></svg></a>
+    </div>
+    <div class="ft-logos">
+      <img src="assets/hb.svg" alt="HeidelbergCement India" width="441" height="80" loading="lazy">
+      <span class="ft-div" aria-hidden="true"></span>
+      <img src="assets/mycem.svg" alt="Mycem Cement" width="251" height="80" loading="lazy">
+      <span class="ft-div" aria-hidden="true"></span>
+      <img src="assets/zauri.svg" alt="Zuari Cement" width="339" height="80" loading="lazy">
+    </div>
+  </div>
+  <img class="ft-img" src="assets/footer.webp" alt="" width="4320" height="702" loading="lazy">
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.querySelectorAll('.shimmer-img').forEach(function(img){
+  var done=function(){img.closest('.shimmer').classList.add('is-loaded')};
+  if(img.complete&&img.naturalWidth){done()}else{img.addEventListener('load',done);img.addEventListener('error',done)}
+});
+</script>
+<script>
+/* Journey videos: assets/process-01.mp4 ... process-06.mp4, one per tab */
+document.querySelectorAll('.j-media[data-video]').forEach(function(box){
+  var v=document.createElement('video');
+  v.muted=true;v.loop=true;v.playsInline=true;v.preload='auto';v.setAttribute('aria-hidden','true');v.setAttribute('muted','');
+  v.className='j-video';
+  v.addEventListener('loadeddata',function(){v.classList.add('is-ready');if(box.closest('.tab-pane.active'))v.play().catch(function(){})});
+  v.src=box.dataset.video;
+  box.appendChild(v);
+});
+document.querySelectorAll('#journey [data-bs-toggle="tab"]').forEach(function(t){
+  t.addEventListener('shown.bs.tab',function(e){
+    var p=document.querySelector(e.target.dataset.bsTarget),v=p&&p.querySelector('video');
+    if(v){v.currentTime=0;v.play().catch(function(){})}
+    var o=e.relatedTarget&&document.querySelector(e.relatedTarget.dataset.bsTarget),ov=o&&o.querySelector('video');
+    if(ov)ov.pause();
+  });
+});
+</script>
+<script>
+/* Carbon carousel: auto-advances when the progress bar completes; hover (or click/keyboard/tap) a card to open it */
+(function(){
+  var row=document.getElementById('carbonRow');if(!row)return;
+  var cards=[].slice.call(row.querySelectorAll('.c-card')),cur=0;
+  function show(i){
+    cur=(i+cards.length)%cards.length;
+    cards.forEach(function(c,k){
+      var on=k===cur;c.classList.toggle('is-active',on);c.setAttribute('aria-expanded',on);
+      if(on){var p=c.querySelector('.c-progress');p.style.animation='none';void p.offsetWidth;p.style.animation='';}
+    });
+  }
+  cards.forEach(function(c,k){
+    c.addEventListener('click',function(){if(k!==cur)show(k)});
+    var t;
+    c.addEventListener('mouseenter',function(){
+      if(!window.matchMedia('(hover:hover)').matches)return;
+      clearTimeout(t);t=setTimeout(function(){if(k!==cur)show(k)},90);
+    });
+    c.addEventListener('mouseleave',function(){clearTimeout(t)});
+    c.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();show(k)}});
+    c.querySelector('.c-progress').addEventListener('animationend',function(){if(c.classList.contains('is-active'))show(cur+1)});
+  });
+  row.addEventListener('mouseenter',function(){row.classList.add('is-paused')});
+  row.addEventListener('mouseleave',function(){row.classList.remove('is-paused')});
+  row.addEventListener('focusin',function(){row.classList.add('is-paused')});
+  row.addEventListener('focusout',function(){row.classList.remove('is-paused')});
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(en){
+      var vis=en[0].isIntersecting;row.classList.toggle('is-paused',!vis);
+      if(vis){var p=cards[cur].querySelector('.c-progress');if(!row.dataset.started){row.dataset.started=1;show(cur)}}
+    },{threshold:.35}).observe(row);
+  }
+})();
+</script>
+<script>
+/* Awards: section pins while you scroll; text fades in first, then the photos fly in from outside the screen */
+(function(){
+  var sec=document.getElementById('awards');if(!sec)return;
+  var text=sec.querySelector('.aw-text'),imgs=[].slice.call(sec.querySelectorAll('.aw-img')),ticking=false;
+  var clamp=function(v){return Math.max(0,Math.min(1,v))},ease=function(t){return 1-Math.pow(1-t,3)};
+  var geo=[];
+  function measure(){
+    var f=sec.querySelector('.aw-field').getBoundingClientRect();
+    geo=imgs.map(function(im){
+      var w=im.offsetWidth,x=im.offsetLeft+w/2,y=im.offsetTop+w/2;
+      return {dx:(x/f.width-.5)*2.4*window.innerWidth,dy:(y/f.height-.5)*2.4*window.innerHeight};
+    });
+  }
+  function render(){
+    ticking=false;
+    var r=sec.getBoundingClientRect(),total=r.height-window.innerHeight;
+    var p=clamp(total>0?-r.top/total:0);
+    var t=ease(clamp((p-.04)/.2));
+    text.style.opacity=t;text.style.transform='translateY('+((1-t)*24)+'px)';
+    imgs.forEach(function(im,i){
+      var q=ease(clamp((p-(.28+i*.07))/.3)),g=geo[i]||{dx:0,dy:0};
+      im.style.opacity=Math.min(1,q*2);
+      im.style.transform='translate('+(g.dx*(1-q))+'px,'+(g.dy*(1-q))+'px) scale('+(.8+.2*q)+')';
+    });
+  }
+  function onScroll(){if(!ticking){ticking=true;requestAnimationFrame(render)}}
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',function(){measure();render()});
+  window.addEventListener('load',function(){measure();render()});
+  measure();render();
+})();
+</script>
+</body>
+</html>
