@@ -168,6 +168,10 @@ body{font-family:var(--bs-font-sans-serif)}
  .aw-img{left:var(--x);top:var(--y);width:clamp(6rem,11.2vw,10rem)}
 }/* footer */
 .ft{background:linear-gradient(180deg,#fff 0,#e7e6e3 6%,#c6bfb6 32%,#8a8379 56%,#4a4540 80%,#3a3632 100%);padding-top:clamp(3rem,6vw,5rem)}
+.ft{position:relative}
+.ft-credit{position:absolute;left:0;right:0;bottom:0;margin:0;padding:2.5rem 1rem clamp(.75rem,1.6vw,1.25rem);text-align:center;font-size:var(--fs-sm);line-height:1.4;color:rgba(255,255,255,.9);background:linear-gradient(transparent,rgba(0,0,0,.55))}
+.ft-credit a{color:#fff;font-weight:600;text-decoration:underline;text-underline-offset:3px;transition:color .3s ease}
+.ft-credit a:hover,.ft-credit a:focus-visible{color:#7be0a6}
 .ft-in{padding:0 clamp(1rem,5.5vw,5rem)}
 .ft-cols{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem 1.5rem}
 .ft-cols h4{margin:0 0 clamp(1rem,2vw,1.5rem);font-size:var(--fs-lg);line-height:1.3;font-weight:500;color:var(--hc-green)}
@@ -526,6 +530,7 @@ textarea.enq-field{height:clamp(8rem,13vw,11.5rem);padding-top:.9rem;resize:vert
     </div>
   </div>
   <img class="ft-img" src="assets/footer.webp" alt="" width="4320" height="702" loading="lazy">
+  <p class="ft-credit">Designed and developed by <a href="https://rockpaperscissors.studio/" target="_blank" rel="noopener">Rock Paper Scissors Studio</a></p>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
