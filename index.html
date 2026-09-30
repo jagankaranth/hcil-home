@@ -50,8 +50,15 @@ body{font-family:var(--bs-font-sans-serif)}
 .hero-nav .navbar-brand img{grid-area:1/1;transition:opacity .35s ease}
 .hero-nav .logo-dark{opacity:0}
 .hero-nav .navbar-brand img{height:clamp(1.5rem,7vw,2rem);width:auto;max-width:100%}
-.hero-nav .navbar-toggler{padding:.35rem .6rem}
-@media (max-width:359.98px){.hero-nav .navbar-brand img{height:1.25rem}.hero-nav .btn-contact{padding:.5rem .6rem}.hero-nav .navbar-toggler{padding:.3rem .45rem}.hero-nav .navbar-toggler-icon{width:1.25em;height:1.25em}}
+.hero-nav{--nav-btn-h:2.5rem}
+.hero-nav .btn-contact{display:inline-flex;align-items:center;height:var(--nav-btn-h);padding-block:0}
+.hero-nav .navbar-toggler{place-items:center;height:var(--nav-btn-h);width:var(--nav-btn-h);padding:0;border:0;box-shadow:none}
+@media (max-width:1199.98px){.hero-nav .navbar-toggler{display:grid}}
+.hero-nav .navbar-toggler:focus,.hero-nav .navbar-toggler:focus-visible{outline:0;box-shadow:none}
+.hero-nav .navbar-toggler:focus-visible{background:rgba(255,255,255,.18);border-radius:.5rem}
+.hero-nav.is-stuck .navbar-toggler:focus-visible{background:rgba(0,0,0,.06)}
+@media (max-width:1199.98px){.hero-nav .navbar-nav .nav-link{width:fit-content;padding:.6rem 0}.hero-nav .navbar-nav{padding-block:.5rem .75rem}}
+@media (max-width:359.98px){.hero-nav{--nav-btn-h:2.25rem}.hero-nav .navbar-brand img{height:1.25rem}.hero-nav .btn-contact{padding-inline:.6rem}.hero-nav .navbar-toggler-icon{width:1.25em;height:1.25em}}
 .hero-nav .nav-link{font-size:var(--fs-base);color:#fff;padding:.4rem .2rem;background:linear-gradient(currentColor,currentColor) no-repeat left bottom/0 .125rem;transition:background-size .3s ease,opacity .3s ease,color .3s ease}
 .hero-nav .nav-link:hover,.hero-nav .nav-link:focus-visible,.hero-nav .nav-link.show{background-size:100% .125rem;color:#fff}
 .hero-nav .nav-link.active{background-size:100% .125rem}
@@ -71,7 +78,7 @@ body{font-family:var(--bs-font-sans-serif)}
 .hero-nav.is-stuck .nav-link.active{color:var(--hc-green)}
 .hero-nav.is-stuck .btn-contact{border-color:var(--hc-green);color:var(--hc-green)}
 .hero-nav.is-stuck .btn-contact:hover,.hero-nav.is-stuck .btn-contact:focus-visible{background:var(--hc-green);color:#fff}
-.hero-nav.is-stuck .navbar-toggler{border-color:rgba(0,0,0,.15);--bs-navbar-toggler-icon-bg:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='%232b2b2b' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E")}
+.hero-nav.is-stuck .navbar-toggler{--bs-navbar-toggler-icon-bg:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='%232b2b2b' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E")}
 html{scroll-padding-top:5rem}
 
 .hero-content{position:relative;z-index:2;min-height:100vh;padding:7.5rem 0 4rem}
@@ -113,10 +120,10 @@ html{scroll-padding-top:5rem}
 .brand-map{padding:clamp(0rem,3vw,3rem)}
 @media (max-width:991.98px){.brand-map{max-width:min(70vw,18.75rem)}}
 .shimmer{position:relative;background:#e9edea}
-.shimmer::before{content:"";position:absolute;top:0;bottom:0;left:0;width:45%;z-index:2;background:linear-gradient(105deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.45) 50%,rgba(255,255,255,0) 100%);transform:translateX(-120%) skewX(-18deg);animation:sweep 4s ease-in-out infinite;pointer-events:none}
+.shimmer::before{content:"";position:absolute;top:0;bottom:0;left:0;width:45%;z-index:2;background:linear-gradient(105deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.3) 50%,rgba(255,255,255,0) 100%);transform:translateX(-120%) skewX(-18deg);animation:sweep 10s ease-in-out infinite;pointer-events:none}
 .shimmer-img{opacity:0;transition:opacity .6s ease}
 .shimmer.is-loaded .shimmer-img{opacity:1}
-@keyframes sweep{0%{transform:translateX(-120%) skewX(-18deg)}55%,100%{transform:translateX(320%) skewX(-18deg)}}
+@keyframes sweep{0%{transform:translateX(-120%) skewX(-18deg)}45%,100%{transform:translateX(320%) skewX(-18deg)}}
 .brand-photo{display:block;width:100%;height:auto;aspect-ratio:1890/900;object-fit:cover}
 .brand-photo--mycem{overflow:hidden;border-radius:clamp(1rem,2vw,1.5rem) clamp(3rem,8vw,5rem) clamp(1rem,2vw,1.5rem) clamp(1rem,2vw,1.5rem)}
 .brand-photo--zuari .brand-photo{aspect-ratio:1827/900}
@@ -209,6 +216,7 @@ html{scroll-padding-top:5rem}
 .ft{background:linear-gradient(180deg,#fff 0,#e7e6e3 6%,#c6bfb6 32%,#8a8379 56%,#4a4540 80%,#3a3632 100%);padding-top:clamp(3rem,6vw,5rem)}
 .ft{position:relative}
 .ft-credit{position:relative;z-index:2;margin:clamp(1.5rem,3.5vw,3rem) 0 0;text-align:center;font-size:var(--fs-sm);line-height:1.4;color:rgba(255,255,255,.85)}
+@media (max-width:575.98px){.ft-credit{max-width:13rem;margin-inline:auto}}
 .ft-credit a{color:#fff;font-weight:600;text-decoration:underline;text-underline-offset:.1875rem;transition:color .3s ease}
 .ft-credit a:hover,.ft-credit a:focus-visible{color:#7be0a6}
 .ft-in{padding:0 clamp(1rem,5.5vw,5rem)}
@@ -217,17 +225,19 @@ html{scroll-padding-top:5rem}
 .ft-cols ul{list-style:none;margin:0;padding:0;display:grid;gap:clamp(.75rem,1.6vw,1.25rem)}
 .ft-cols a{font-size:var(--fs-base);line-height:1.3;color:#000;text-decoration:none;background:linear-gradient(currentColor,currentColor) no-repeat left bottom/0 1px;transition:background-size .3s ease,color .3s ease}
 .ft-cols a:hover,.ft-cols a:focus-visible{color:var(--hc-green);background-size:100% 1px}
-.ft-social{display:flex;justify-content:flex-end;gap:clamp(.75rem,1.4vw,1rem);margin-top:clamp(2.5rem,8vw,7.5rem)}
-.ft-social a{display:grid;place-items:center;width:clamp(2.5rem,3.4vw,2.875rem);aspect-ratio:1;border-radius:.375rem;background:var(--hc-green);color:#fff;transition:background .3s ease}
+.ft-social{display:flex;gap:clamp(.5rem,1vw,.75rem)}
+.ft-social a{display:grid;place-items:center;width:clamp(2.25rem,3vw,2.75rem);aspect-ratio:1;border-radius:.375rem;background:var(--hc-green);color:#fff;transition:background .3s ease}
 .ft-social a:hover,.ft-social a:focus-visible{background:#006b31}
 .ft-social svg{width:55%;height:auto}
-.ft-logos{display:flex;flex-direction:column;align-items:center;gap:clamp(1.25rem,3vw,2rem);margin-top:clamp(1.25rem,2.5vw,2rem)}
+.ft-logos{display:flex;flex-direction:column;align-items:center;gap:clamp(2rem,5vw,2.5rem);margin-top:clamp(2.5rem,8vw,7.5rem)}
+.ft-brand{display:flex;flex-direction:column;align-items:center;gap:clamp(1rem,1.8vw,1.5rem)}
 .ft-logos img{display:block;height:clamp(2.25rem,4.6vw,5rem);width:auto;max-width:100%}
-.ft-div{display:none;width:1px;align-self:stretch;background:rgba(255,255,255,.4)}
+.ft-div{display:none;width:1px;align-self:flex-end;height:clamp(2.25rem,4.6vw,5rem);background:rgba(255,255,255,.4)}
 .ft-img{position:relative;z-index:1;display:block;width:100%;height:auto;margin-top:-3.5vw}
 @media (min-width:768px){
  .ft-cols{grid-template-columns:repeat(4,auto);justify-content:space-between}
- .ft-logos{flex-direction:row;justify-content:space-between}
+ .ft-logos{flex-direction:row;justify-content:space-between;align-items:flex-end}
+ .ft-brand--start{align-items:flex-start}.ft-brand--end{align-items:flex-end}
  .ft-div{display:block}
 }
 
@@ -316,7 +326,7 @@ textarea.enq-field{height:clamp(8rem,13vw,11.5rem);padding-top:.9rem;resize:vert
     <div class="col-12 col-md-6 col-xl-3">
       <article class="stat-card h-100" tabindex="0">
         <img src="assets/manufactor.webp" alt="" width="610" height="610" loading="lazy">
-        <div class="num">7</div>
+        <div class="num">8</div>
         <div class="lbl">Manufacturing units</div>
         <p class="desc">Across our operations in India</p>
       </article>
@@ -576,17 +586,12 @@ textarea.enq-field{height:clamp(8rem,13vw,11.5rem);padding-top:.9rem;resize:vert
       <nav aria-label="Responsibility"><h4>Responsibility</h4><ul><li><a href="#">Sustainability</a></li><li><a href="#">CSR</a></li><li><a href="#">Safety</a></li><li><a href="#">BRSR and reports</a></li><li><a href="#">Blogs and articles</a></li></ul></nav>
       <nav aria-label="Investors"><h4>Investors</h4><ul><li><a href="#">Financials</a></li><li><a href="#">Corporate announcements</a></li><li><a href="#">Board meetings</a></li><li><a href="#">Investor information</a></li><li><a href="#">Investor contacts</a></li></ul></nav>
     </div>
-    <div class="ft-social">
-      <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6" fill="currentColor"/></svg></a>
-      <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 11v5M8 8v.01M12 16v-5M12 13c0-1.7 1-2 2-2s2 .8 2 2.3V16"/></svg></a>
-      <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.5v5l4.5-2.5z"/></svg></a>
-    </div>
     <div class="ft-logos">
-      <img src="assets/hb.svg" alt="HeidelbergCement India" width="441" height="80" loading="lazy">
+      <div class="ft-brand ft-brand--start"><div class="ft-social"><a href="#" aria-label="HeidelbergCement India Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6" fill="currentColor"/></svg></a><a href="#" aria-label="HeidelbergCement India LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 11v5M8 8v.01M12 16v-5M12 13c0-1.7 1-2 2-2s2 .8 2 2.3V16"/></svg></a><a href="#" aria-label="HeidelbergCement India YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.5v5l4.5-2.5z"/></svg></a></div><img src="assets/hb.svg" alt="HeidelbergCement India" width="441" height="80" loading="lazy"></div>
       <span class="ft-div" aria-hidden="true"></span>
-      <img src="assets/mycem.svg" alt="Mycem Cement" width="251" height="80" loading="lazy">
+      <div class="ft-brand ft-brand--mid"><div class="ft-social"><a href="#" aria-label="Mycem Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6" fill="currentColor"/></svg></a><a href="#" aria-label="Mycem LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 11v5M8 8v.01M12 16v-5M12 13c0-1.7 1-2 2-2s2 .8 2 2.3V16"/></svg></a><a href="#" aria-label="Mycem YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.5v5l4.5-2.5z"/></svg></a></div><img src="assets/mycem.svg" alt="Mycem Cement" width="251" height="80" loading="lazy"></div>
       <span class="ft-div" aria-hidden="true"></span>
-      <img src="assets/zauri.svg" alt="Zuari Cement" width="339" height="80" loading="lazy">
+      <div class="ft-brand ft-brand--end"><div class="ft-social"><a href="#" aria-label="Zuari Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6" fill="currentColor"/></svg></a><a href="#" aria-label="Zuari LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 11v5M8 8v.01M12 16v-5M12 13c0-1.7 1-2 2-2s2 .8 2 2.3V16"/></svg></a><a href="#" aria-label="Zuari YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.5v5l4.5-2.5z"/></svg></a></div><img src="assets/zauri.svg" alt="Zuari Cement" width="339" height="80" loading="lazy"></div>
     </div>
     <p class="ft-credit">Designed and developed by <a href="https://rockpaperscissors.studio/" target="_blank" rel="noopener">Rock Paper Scissors Studio</a></p>
   </div>
