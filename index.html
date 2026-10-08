@@ -92,8 +92,10 @@ html{scroll-padding-top:5rem}
 .stat-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity .5s ease,transform .8s ease;z-index:0}
 .stat-card::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,0) 35%,rgba(0,0,0,0) 50%,rgba(0,0,0,.5)),rgba(0,0,0,.25);opacity:0;transition:opacity .5s ease}
 .stat-card>*:not(img){position:relative;z-index:2}
+.stat-ic{width:clamp(1.75rem,2.4vw,2.125rem);height:clamp(1.75rem,2.4vw,2.125rem);margin-bottom:clamp(.75rem,1.4vw,1.25rem);color:var(--hc-green);transition:color .4s ease}
+.stat-card:hover .stat-ic,.stat-card:focus-visible .stat-ic{color:#fff}
 .stat-card .num{white-space:nowrap;font-size:clamp(2.25rem,12cqw,3rem);line-height:1;font-weight:400;color:var(--hc-green);transition:color .4s ease}
-.stat-card .lbl{margin-top:clamp(1.5rem,1rem + 2vw,3rem);font-size:clamp(1.05rem,1rem + .15vw,1.125rem);line-height:1;font-weight:600;color:#000;transition:color .4s ease}
+.stat-card .lbl{margin-top:clamp(1rem,.6rem + 1.6vw,2.25rem);font-size:clamp(1.05rem,1rem + .15vw,1.125rem);line-height:1;font-weight:600;color:#000;transition:color .4s ease}
 .stat-card .desc{margin:.75rem 0 0;font-size:clamp(.95rem,.9rem + .1vw,1rem);line-height:1;font-weight:400;color:#4D4D4D;transition:color .4s ease}
 .stat-card:hover img,.stat-card:focus-visible img{opacity:1;transform:scale(1)}
 .stat-card:hover::after,.stat-card:focus-visible::after{opacity:1}
@@ -104,11 +106,12 @@ html{scroll-padding-top:5rem}
 .section-title{text-wrap:balance;font-size:clamp(1.75rem,1rem + 2.7vw,3rem);line-height:1.25;font-weight:700;letter-spacing:0;color:#000;text-align:center}
 .section-desc{font-size:var(--fs-base);line-height:1.5;font-weight:400;letter-spacing:0;color:rgba(0,0,0,.7);text-align:center;max-width:60rem;margin:1.25rem auto 0}
 /* engineering banner */
-.eng{position:relative;overflow:hidden;width:100%;height:26rem;border-radius:0 0 clamp(4rem,12vw,12rem) 0;background:#cfe0ee}
-@media (min-width:768px){.eng{height:auto;aspect-ratio:1447/705}}
+.eng{--efs:clamp(1.75rem,1rem + 2.7vw,3rem);--epad:clamp(1.25rem,2.6vw,2.5rem);--elines:3;--ehead:calc(var(--epad) + var(--elines) * 1.25 * var(--efs));position:relative;overflow:hidden;width:100%;height:calc(var(--ehead) + 17rem);border-radius:0 0 clamp(4rem,12vw,12rem) 0;background:#cfe0ee}
+@media (max-width:399.98px){.eng{--elines:4}}
+@media (min-width:768px){.eng{--elines:3;height:calc(var(--ehead) + clamp(18rem,34vw,32rem))}}
 .eng-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center bottom}
-.eng::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#fff 0%,rgba(255,255,255,0) 55%);pointer-events:none}
-.eng-title{position:relative;z-index:2;font-size:clamp(1.75rem,1rem + 2.7vw,3rem);line-height:1.25;font-weight:700;letter-spacing:0;color:#000;padding-top:clamp(2.5rem,6vw,5rem)}
+.eng::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#fff 0,#fff var(--ehead),rgba(255,255,255,0) calc(var(--ehead) + 5rem));pointer-events:none}
+.eng-title{max-width:56rem;margin-inline:auto;text-wrap:balance;position:relative;z-index:2;font-size:var(--efs);line-height:1.25;font-weight:700;letter-spacing:0;color:#000;padding-top:var(--epad)}
 .btn-know{position:absolute;z-index:2;left:50%;bottom:clamp(1.5rem,5vw,4.5rem);transform:translateX(-50%);display:inline-flex;align-items:center;gap:.6rem;background:#fff;color:var(--hc-green);border:0;border-radius:.5rem;padding:.75rem 1.5rem;font-size:var(--fs-base);line-height:1.5;font-weight:600;text-decoration:none;white-space:nowrap;transition:background .4s ease,color .4s ease}
 .btn-know:hover,.btn-know:focus-visible{background:#eaf4ee;color:#006b31}
 /* maps */
@@ -313,8 +316,8 @@ textarea.enq-field{height:clamp(8rem,13vw,11.5rem);padding-top:.9rem;resize:vert
     </div>
   </nav>
   <div class="hero-content container d-flex flex-column justify-content-end align-items-center text-center">
-    <h1>Trusted cement for a growing India, with less carbon in every bag</h1>
-    <p class="mx-auto mt-3 mb-5">Mycem Cement and Zuari Cement, from a group that has made cement since 1873. Last year we took 34 kg of CO₂ out of every tonne.</p>
+    <h1>A home holds a lifetime.<br class="d-none d-md-inline"> Our cement holds the home.</h1>
+    <p class="mx-auto mt-3 mb-5">Backed by 150 Years of German Precision &amp; responsible manufacturing. Delivered through innovation that is committed to a stronger &amp; a sustainable tomorrow.</p>
     <a class="btn btn-outline-hero d-inline-flex align-items-center gap-2" href="#stats"><span class="roll" data-text="Explore Journey"><span>Explore Journey</span></span><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M9 2v14M3 10l6 6 6-6"/></svg></a>
   </div>
 </header>
@@ -326,33 +329,37 @@ textarea.enq-field{height:clamp(8rem,13vw,11.5rem);padding-top:.9rem;resize:vert
     <div class="col-12 col-md-6 col-xl-3">
       <article class="stat-card h-100" tabindex="0">
         <img src="assets/manufactor.webp" alt="" width="610" height="610" loading="lazy">
-        <div class="num">8</div>
+        <svg class="stat-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 21h18"/><path d="M5 21V11l5 3v-3l5 3V5h4v16"/><path d="M9 17h2M14 17h2"/></svg>
+        <div class="num">7</div>
         <div class="lbl">Manufacturing units</div>
-        <p class="desc">Across our operations in India</p>
-      </article>
-    </div>
-    <div class="col-12 col-md-6 col-xl-3">
-      <article class="stat-card h-100" tabindex="0">
-        <img src="assets/production.webp" alt="" width="610" height="610" loading="lazy">
-        <div class="num">12.6 MnT</div>
-        <div class="lbl">Cement capacity</div>
-        <p class="desc">Annual production capacity across India</p>
+        <p class="desc">Serving markets across Central &amp; Southern India</p>
       </article>
     </div>
     <div class="col-12 col-md-6 col-xl-3">
       <article class="stat-card h-100" tabindex="0">
         <img src="assets/network.webp" alt="" width="610" height="610" loading="lazy">
-        <div class="num">10,000+</div>
-        <div class="lbl">Dealers</div>
-        <p class="desc">A strong distribution network across India</p>
+        <svg class="stat-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2c3 .3 5 2.6 5 5.8"/></svg>
+        <div class="num">10,000</div>
+        <div class="lbl">Channel partners</div>
+        <p class="desc">Delivering the right cement to where you build</p>
       </article>
     </div>
     <div class="col-12 col-md-6 col-xl-3">
       <article class="stat-card h-100" tabindex="0">
         <img src="assets/legacy.webp" alt="" width="610" height="610" loading="lazy">
+        <svg class="stat-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="9" r="5"/><path d="M8.5 13.5L7 21l5-3 5 3-1.5-7.5"/></svg>
         <div class="num">150+</div>
         <div class="lbl">Years of expertise</div>
-        <p class="desc">German cement legacy since 1873</p>
+        <p class="desc">German manufacturing excellence since 1873</p>
+      </article>
+    </div>
+    <div class="col-12 col-md-6 col-xl-3">
+      <article class="stat-card h-100" tabindex="0">
+        <img src="assets/production.webp" alt="" width="610" height="610" loading="lazy">
+        <svg class="stat-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3s6 6.2 6 10.5A6 6 0 0 1 6 13.5C6 9.2 12 3 12 3z"/><path d="M9.5 14a2.8 2.8 0 0 0 2.5 2.5"/></svg>
+        <div class="num">4X</div>
+        <div class="lbl">Water Positive</div>
+        <p class="desc">34 kg less CO₂ per tonne of cement</p>
       </article>
     </div>
   </div>
@@ -361,15 +368,15 @@ textarea.enq-field{height:clamp(8rem,13vw,11.5rem);padding-top:.9rem;resize:vert
 <!-- Engineering banner -->
 <section class="eng text-center">
   <img class="eng-img" src="assets/plant.webp" alt="HeidelbergCement plant with cement silos" width="1447" height="705" loading="lazy">
-  <h2 class="eng-title px-3">From German Engineering<br class="d-none d-md-inline"> to Indian Infrastructure.</h2>
+  <h2 class="eng-title px-3">India’s Progress.<br class="d-none d-md-inline"> Powered by German Engineering.<br class="d-none d-md-inline"> Towards a Greener Future.</h2>
   <a class="btn-know" href="#"><span class="roll" data-text="Know more"><span>Know more</span></span><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 14L14 4M6 4h8v8"/></svg></a>
 </section>
 
 <!-- Brands -->
 <section class="container py-5 my-lg-5">
   <div class="text-center brands-head">
-    <h2 class="section-title">Different markets, different ranges, one engineering ethos</h2>
-    <p class="section-desc">Mycem Cement sells across Uttar Pradesh, Madhya Pradesh, Rajasthan, Bihar and Greater NCR. Zuari Cement sells across Andhra Pradesh, Telangana, Karnataka, Maharashtra and parts of Odisha.</p>
+    <h2 class="section-title">Diverse Brands. One Shared Commitment</h2>
+    <p class="section-desc">Our diverse cement brands are shaped around the markets and construction needs we serve. From homes and buildings to roads, bridges and dams, our portfolio delivers solutions across applications</p>
   </div>
 
   <div class="row align-items-center gx-lg-5 gy-5 mb-5">
@@ -382,7 +389,7 @@ textarea.enq-field{height:clamp(8rem,13vw,11.5rem);padding-top:.9rem;resize:vert
         <img class="brand-photo shimmer-img" src="assets/Mycem.webp" alt="Mycem cement bags" width="1890" height="900" loading="lazy">
       </div>
       <h3 class="brand-title">Mycem Cement</h3>
-      <p class="brand-text">Built for the family building their own home, once. Power Shield keeps seepage out of the walls. Primo comes in a tamper-proof pack that keeps the bag as good as the day it was packed.</p>
+      <p class="brand-text">Trusted across Central and North India, Mycem cement premium portfolio delivers quality and performance that matches the diverse requirements of home builders and construction professionals</p>
       <a class="btn-brand" href="#"><span class="roll" data-text="Explore Mycem"><span>Explore Mycem</span></span><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 14L14 4M6 4h8v8"/></svg></a>
      </div>
     </div>
@@ -398,7 +405,7 @@ textarea.enq-field{height:clamp(8rem,13vw,11.5rem);padding-top:.9rem;resize:vert
         <img class="brand-photo shimmer-img" src="assets/Zuari.webp" alt="Zuari cement bags" width="1827" height="900" loading="lazy">
       </div>
       <h3 class="brand-title">Zuari Cement</h3>
-      <p class="brand-text">Six cements across the grades. OPC and PPC for everyday building, PSC for foundations and saline ground, Power Shield against seepage, Primo at Grade 53 for high-rise work, and Primo Greencem for lower carbon.</p>
+      <p class="brand-text">Serving Southern India for generations, Zuari Cement combines trusted quality with a diverse product portfolio, serving the evolving needs of homes, businesses and infrastructure across the region.</p>
       <a class="btn-brand" href="#"><span class="roll" data-text="Explore Zuari"><span>Explore Zuari</span></span><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 14L14 4M6 4h8v8"/></svg></a>
      </div>
     </div>
