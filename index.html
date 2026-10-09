@@ -94,6 +94,7 @@ html{scroll-padding-top:5rem}
 .stat-card>*:not(img){position:relative;z-index:2}
 .stat-ic{width:clamp(1.75rem,2.4vw,2.125rem);height:clamp(1.75rem,2.4vw,2.125rem);margin-bottom:clamp(.75rem,1.4vw,1.25rem);color:var(--hc-green);transition:color .4s ease}
 .stat-card:hover .stat-ic,.stat-card:focus-visible .stat-ic{color:#fff}
+.num-x{font-size:.6em;margin-left:.06em}
 .stat-card .num{white-space:nowrap;font-size:clamp(2.25rem,12cqw,3rem);line-height:1;font-weight:400;color:var(--hc-green);transition:color .4s ease}
 .stat-card .lbl{margin-top:clamp(1rem,.6rem + 1.6vw,2.25rem);font-size:clamp(1.05rem,1rem + .15vw,1.125rem);line-height:1;font-weight:600;color:#000;transition:color .4s ease}
 .stat-card .desc{margin:.75rem 0 0;font-size:clamp(.95rem,.9rem + .1vw,1rem);line-height:1;font-weight:400;color:#4D4D4D;transition:color .4s ease}
@@ -162,10 +163,10 @@ html{scroll-padding-top:5rem}
 .j-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;align-items:start}
 .j-title{margin:0;font-size:clamp(1.75rem,1.2rem + 1.6vw,2.5rem);line-height:1.3;font-weight:700;color:#000;letter-spacing:0}
 .j-desc{margin:0;font-size:var(--fs-base);line-height:1.5;font-weight:400;color:#000;max-width:20rem}
-.j-media{position:relative;min-height:clamp(15rem,40vw,28rem);display:flex;align-items:center;justify-content:center}
-.j-media::before{content:"";position:absolute;left:50%;bottom:4%;width:90%;height:45%;transform:translateX(-50%);background:radial-gradient(ellipse at center,rgba(0,132,61,.12),transparent 70%);pointer-events:none}
-.j-video{position:relative;max-width:100%;max-height:28rem;width:auto;height:auto;object-fit:contain;opacity:0;transition:opacity .6s ease}
+.j-media{position:relative;min-height:clamp(15rem,48vw,33.6rem);display:flex;align-items:center;justify-content:center}
+.j-video{position:relative;max-width:100%;max-height:33.6rem;width:auto;height:auto;object-fit:contain;opacity:0;transition:opacity .6s ease}
 .j-video.is-ready{opacity:1}
+.j-video{--fx:clamp(1.5rem,16%,7rem);--fy:clamp(1rem,8.3%,4.5rem);-webkit-mask-image:linear-gradient(to right,transparent 0,#000 var(--fx),#000 calc(100% - var(--fx)),transparent 100%),linear-gradient(to bottom,transparent 0,#000 var(--fy),#000 calc(100% - var(--fy)),transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent 0,#000 var(--fx),#000 calc(100% - var(--fx)),transparent 100%),linear-gradient(to bottom,transparent 0,#000 var(--fy),#000 calc(100% - var(--fy)),transparent 100%);mask-composite:intersect}
 @media (min-width:992px){
  .j-grid{grid-template-columns:1fr 1.7fr 1fr;gap:1.5rem;min-height:26rem}
  .j-desc{align-self:end;justify-self:end}
@@ -206,16 +207,26 @@ html{scroll-padding-top:5rem}
 }
 /* awards (scroll-pinned) */
 .awards{position:relative;height:340vh}
-.aw-stick{position:sticky;top:0;height:100vh;min-height:34rem;overflow:hidden;display:flex;align-items:center;justify-content:center}
-.aw-field{position:absolute;inset:12% 4%;pointer-events:none}
-.aw-img{position:absolute;left:var(--mx);top:var(--my);width:clamp(4.5rem,22vw,6rem);height:auto;aspect-ratio:1;border-radius:.75rem;object-fit:cover;box-shadow:0 .625rem 1.875rem rgba(0,0,0,.08);will-change:transform,opacity}
-.aw-text{position:relative;z-index:2;text-align:center;max-width:44rem;padding:0 1.5rem;will-change:transform,opacity}
+.aw-stick{position:sticky;top:0;height:100vh;min-height:34rem;overflow:hidden;display:flex;align-items:center;justify-content:center;contain:layout paint}
+.aw-field{position:absolute;inset:calc(4.5rem + 2%) 4% 2%;pointer-events:none}
+@media (max-width:1199.98px){.aw-stick{padding-top:4.5rem}}
+.aw-img{position:absolute;left:var(--mx);top:var(--my,auto);bottom:var(--mb,auto);width:clamp(4rem,min(24vw,12vh),9rem);height:auto;aspect-ratio:3/4;border-radius:.75rem;object-fit:cover;object-position:50% 30%;box-shadow:0 .625rem 1.875rem rgba(0,0,0,.1);backface-visibility:hidden}
+.awards.is-animating .aw-img,.awards.is-animating .aw-text{will-change:transform,opacity}
+/* short landscape screens (phones turned sideways): no pinned animation, show text then a row of photos */
+@media (max-height:480px) and (orientation:landscape){
+ .awards{height:auto}
+ .aw-stick{position:static;height:auto;min-height:0;padding:3rem 1rem;flex-direction:column;gap:2rem;contain:none}
+ .aw-text{order:1}
+ .aw-field{order:2;position:static;inset:auto;display:grid;grid-template-columns:repeat(6,1fr);gap:.75rem;width:100%}
+ .aw-img{position:static;width:100%}
+}
+@media (min-width:1200px){.aw-img{left:var(--x);top:var(--y);bottom:auto;width:clamp(7rem,min(13vw,22vh),15rem)}}
+.aw-text{position:relative;z-index:2;text-align:center;max-width:44rem;padding:0 1.5rem}
 .aw-text .section-desc{max-width:38rem}
 .aw-text .btn-brand{margin-top:clamp(1.5rem,3vw,2.5rem)}
-@media (min-width:768px){
- .aw-field{inset:10% 3%}
- .aw-img{left:var(--x);top:var(--y);width:clamp(6rem,11.2vw,10rem)}
-}/* footer */
+@media (max-height:620px) and (max-width:767.98px){.aw-text .section-title{font-size:1.5rem}.aw-text .section-desc{font-size:.85rem;margin-top:.75rem}.aw-text .btn-brand{margin-top:1rem;padding:.65rem 1.25rem}}
+@media (min-width:1200px){.aw-field{inset:10% 3%}}
+/* footer */
 .ft{background:linear-gradient(180deg,#fff 0,#e7e6e3 6%,#c6bfb6 32%,#8a8379 56%,#4a4540 80%,#3a3632 100%);padding-top:clamp(3rem,6vw,5rem)}
 .ft{position:relative}
 .ft-credit{position:relative;z-index:2;margin:clamp(1.5rem,3.5vw,3rem) 0 0;text-align:center;font-size:var(--fs-sm);line-height:1.4;color:rgba(255,255,255,.85)}
@@ -338,7 +349,7 @@ textarea.enq-field{height:clamp(8rem,13vw,11.5rem);padding-top:.9rem;resize:vert
     <div class="col-12 col-md-6 col-xl-3">
       <article class="stat-card h-100" tabindex="0">
         <img src="assets/network.webp" alt="" width="610" height="610" loading="lazy">
-        <svg class="stat-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2c3 .3 5 2.6 5 5.8"/></svg>
+        <svg class="stat-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 9l1.5-5h13L20 9"/><path d="M4 9a2.7 2.7 0 0 0 5.3 0 2.7 2.7 0 0 0 5.4 0A2.7 2.7 0 0 0 20 9"/><path d="M5 12.5V20h14v-7.5"/><path d="M10 20v-4.5h4V20"/></svg>
         <div class="num">10,000</div>
         <div class="lbl">Channel partners</div>
         <p class="desc">Delivering the right cement to where you build</p>
@@ -347,7 +358,7 @@ textarea.enq-field{height:clamp(8rem,13vw,11.5rem);padding-top:.9rem;resize:vert
     <div class="col-12 col-md-6 col-xl-3">
       <article class="stat-card h-100" tabindex="0">
         <img src="assets/legacy.webp" alt="" width="610" height="610" loading="lazy">
-        <svg class="stat-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="9" r="5"/><path d="M8.5 13.5L7 21l5-3 5 3-1.5-7.5"/></svg>
+        <svg class="stat-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 17h.01M12 17h.01"/></svg>
         <div class="num">150+</div>
         <div class="lbl">Years of expertise</div>
         <p class="desc">German manufacturing excellence since 1873</p>
@@ -356,8 +367,8 @@ textarea.enq-field{height:clamp(8rem,13vw,11.5rem);padding-top:.9rem;resize:vert
     <div class="col-12 col-md-6 col-xl-3">
       <article class="stat-card h-100" tabindex="0">
         <img src="assets/production.webp" alt="" width="610" height="610" loading="lazy">
-        <svg class="stat-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3s6 6.2 6 10.5A6 6 0 0 1 6 13.5C6 9.2 12 3 12 3z"/><path d="M9.5 14a2.8 2.8 0 0 0 2.5 2.5"/></svg>
-        <div class="num">4X</div>
+        <svg class="stat-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3s6 6.2 6 10.5A6 6 0 0 1 6 13.5C6 9.2 12 3 12 3z"/><path d="M12 11.2v4.6M9.7 13.5h4.6"/></svg>
+        <div class="num">7.1<span class="num-x">X</span></div>
         <div class="lbl">Water Positive</div>
         <p class="desc">34 kg less CO₂ per tonne of cement</p>
       </article>
@@ -368,14 +379,14 @@ textarea.enq-field{height:clamp(8rem,13vw,11.5rem);padding-top:.9rem;resize:vert
 <!-- Engineering banner -->
 <section class="eng text-center">
   <img class="eng-img" src="assets/plant.webp" alt="HeidelbergCement plant with cement silos" width="1447" height="705" loading="lazy">
-  <h2 class="eng-title px-3">India’s Progress.<br class="d-none d-md-inline"> Powered by German Engineering.<br class="d-none d-md-inline"> Towards a Greener Future.</h2>
+  <h2 class="eng-title px-3">India’s Progress<br class="d-none d-md-inline"> Powered by German Engineering<br class="d-none d-md-inline"> Towards a Greener Future</h2>
   <a class="btn-know" href="#"><span class="roll" data-text="Know more"><span>Know more</span></span><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 14L14 4M6 4h8v8"/></svg></a>
 </section>
 
 <!-- Brands -->
 <section class="container py-5 my-lg-5">
   <div class="text-center brands-head">
-    <h2 class="section-title">Diverse Brands. One Shared Commitment</h2>
+    <h2 class="section-title">Diverse Brands.<br> One Shared Commitment</h2>
     <p class="section-desc">Our diverse cement brands are shaped around the markets and construction needs we serve. From homes and buildings to roads, bridges and dams, our portfolio delivers solutions across applications</p>
   </div>
 
@@ -427,42 +438,42 @@ textarea.enq-field{height:clamp(8rem,13vw,11.5rem);padding-top:.9rem;resize:vert
       <div class="tab-pane fade show active" id="jp01" role="tabpanel" aria-labelledby="jt01" tabindex="0">
         <div class="j-grid">
           <h3 class="j-title">Every Strong<br>foundation<br>begins here</h3>
-          <div class="j-media" data-video="assets/process-01.mp4" role="img" aria-label="Sourcing illustration"></div>
+          <div class="j-media" data-video="assets/process-01.mp4?v=2" role="img" aria-label="Sourcing illustration"></div>
           <p class="j-desc">Carefully selected limestone leaves the quarry face. Sourced responsibly, every journey begins with nature's finest raw material.</p>
         </div>
       </div>
       <div class="tab-pane fade" id="jp02" role="tabpanel" aria-labelledby="jt02" tabindex="0">
         <div class="j-grid">
           <h3 class="j-title">Precision in<br>every fragment</h3>
-          <div class="j-media" data-video="assets/process-02.mp4" role="img" aria-label="Crushing illustration"></div>
+          <div class="j-media" data-video="assets/process-02.mp4?v=2" role="img" aria-label="Crushing illustration"></div>
           <p class="j-desc">Crated limestone rides to the crusher, where raw stone becomes finely processed feed for a process engineered around consistency.</p>
         </div>
       </div>
       <div class="tab-pane fade" id="jp03" role="tabpanel" aria-labelledby="jt03" tabindex="0">
         <div class="j-grid">
           <h3 class="j-title">Where earth<br>meets fire</h3>
-          <div class="j-media" data-video="assets/process-03.mp4" role="img" aria-label="Clinkering illustration"></div>
+          <div class="j-media" data-video="assets/process-03.mp4?v=2" role="img" aria-label="Clinkering illustration"></div>
           <p class="j-desc">Inside high-efficiency kilns, intense heat transforms blended raw material into high strength clinker, the heart of premium cement.</p>
         </div>
       </div>
       <div class="tab-pane fade" id="jp04" role="tabpanel" aria-labelledby="jt04" tabindex="0">
         <div class="j-grid">
           <h3 class="j-title">Where Strength<br>Takes Form</h3>
-          <div class="j-media" data-video="assets/process-04.mp4" role="img" aria-label="Grinding illustration"></div>
+          <div class="j-media" data-video="assets/process-04.mp4?v=2" role="img" aria-label="Grinding illustration"></div>
           <p class="j-desc">Clinker meets gypsum and carefully selected additives in high-efficiency grinding mills. Finely ground and precisely controlled, it becomes the cement that builds what lasts.</p>
         </div>
       </div>
       <div class="tab-pane fade" id="jp05" role="tabpanel" aria-labelledby="jt05" tabindex="0">
         <div class="j-grid">
           <h3 class="j-title">Stored with<br>precision.</h3>
-          <div class="j-media" data-video="assets/process-05.mp4" role="img" aria-label="Storage illustration"></div>
+          <div class="j-media" data-video="assets/process-05.mp4?v=2" role="img" aria-label="Storage illustration"></div>
           <p class="j-desc">Engineered storage preserves quality and ensures every batch keeps the consistency professionals trust.</p>
         </div>
       </div>
       <div class="tab-pane fade" id="jp06" role="tabpanel" aria-labelledby="jt06" tabindex="0">
         <div class="j-grid">
           <h3 class="j-title">Ready to build<br>tomorrow</h3>
-          <div class="j-media" data-video="assets/process-06.mp4" role="img" aria-label="Dispatch illustration"></div>
+          <div class="j-media" data-video="assets/process-06.mp4?v=2" role="img" aria-label="Dispatch illustration"></div>
           <p class="j-desc">From our plants to your projects, every bag carries decades of engineering excellence.</p>
         </div>
       </div>
@@ -518,12 +529,12 @@ textarea.enq-field{height:clamp(8rem,13vw,11.5rem);padding-top:.9rem;resize:vert
 <section class="awards" id="awards">
   <div class="aw-stick">
     <div class="aw-field" aria-hidden="true">
-      <img class="aw-img" src="assets/award-01.webp" alt="" width="320" height="320" decoding="async" style="--x:13%;--y:0%;--mx:4%;--my:2%">
-      <img class="aw-img" src="assets/award-02.webp" alt="" width="320" height="320" decoding="async" style="--x:4%;--y:48%;--mx:36%;--my:84%">
-      <img class="aw-img" src="assets/award-03.webp" alt="" width="320" height="320" decoding="async" style="--x:21%;--y:71%;--mx:6%;--my:76%">
-      <img class="aw-img" src="assets/award-04.webp" alt="" width="320" height="320" decoding="async" style="--x:72%;--y:0%;--mx:68%;--my:4%">
-      <img class="aw-img" src="assets/award-05.webp" alt="" width="320" height="320" decoding="async" style="--x:86%;--y:31%;--mx:36%;--my:14%">
-      <img class="aw-img" src="assets/award-06.webp" alt="" width="320" height="320" decoding="async" style="--x:69%;--y:66%;--mx:66%;--my:74%">
+      <img class="aw-img" src="assets/award-01.webp" alt="" width="320" height="320" decoding="async" style="--x:6%;--y:2%;--mx:4%;--my:0%">
+      <img class="aw-img" src="assets/award-02.webp" alt="" width="320" height="320" decoding="async" style="--x:0%;--y:50%;--mx:37%;--mb:1%">
+      <img class="aw-img" src="assets/award-03.webp" alt="" width="320" height="320" decoding="async" style="--x:15%;--y:64%;--mx:4%;--mb:0%">
+      <img class="aw-img" src="assets/award-04.webp" alt="" width="320" height="320" decoding="async" style="--x:82%;--y:0%;--mx:70%;--my:0%">
+      <img class="aw-img" src="assets/award-05.webp" alt="" width="320" height="320" decoding="async" style="--x:88%;--y:40%;--mx:37%;--my:1%">
+      <img class="aw-img" src="assets/award-06.webp" alt="" width="320" height="320" decoding="async" style="--x:71%;--y:64%;--mx:70%;--mb:0%">
     </div>
     <div class="aw-text">
       <h2 class="section-title">Recognized for the work<br class="d-none d-md-inline"> that moves us forward.</h2>
@@ -542,19 +553,19 @@ textarea.enq-field{height:clamp(8rem,13vw,11.5rem);padding-top:.9rem;resize:vert
       <div class="help-grid">
         <a class="help-card" href="#">
           <img src="assets/whatsapp.svg" alt="" width="32" height="32" loading="lazy">
-          <span><span class="help-title">Chat on Whatsapp</span><span class="help-sub">Fastest for home builders</span></span>
+          <span><span class="help-title">Chat on Whatsapp</span><span class="help-sub">Message us for quick answers</span></span>
         </a>
         <a class="help-card" href="#">
           <img src="assets/dealer.svg" alt="" width="32" height="32" loading="lazy">
-          <span><span class="help-title">Find a dealer</span><span class="help-sub">Fastest for home builders</span></span>
+          <span><span class="help-title">Find a dealer</span><span class="help-sub">Locate a dealer near you</span></span>
         </a>
         <a class="help-card" href="#">
           <img src="assets/bulk.svg" alt="" width="32" height="32" loading="lazy">
-          <span><span class="help-title">Bulk and projects</span><span class="help-sub">Fastest for home builders</span></span>
+          <span><span class="help-title">Bulk and projects</span><span class="help-sub">Supply for large sites and projects</span></span>
         </a>
         <a class="help-card" href="#">
           <img src="assets/technical.svg" alt="" width="32" height="32" loading="lazy">
-          <span><span class="help-title">Technical services</span><span class="help-sub">Fastest for home builders</span></span>
+          <span><span class="help-title">Technical services</span><span class="help-sub">Expert guidance for your build</span></span>
         </a>
       </div>
     </div>
@@ -673,36 +684,62 @@ document.querySelectorAll('#journey [data-bs-toggle="tab"]').forEach(function(t)
 })();
 </script>
 <script>
-/* Awards: section pins while you scroll; text fades in first, then the photos fly in from outside the screen */
+/* Awards: section pins while you scroll; text fades in first, then the photos fly in from outside the screen.
+   Performance: geometry is measured once (not every frame), work only runs while the section is near the viewport,
+   progress is eased with a light smoothing loop, and will-change is applied only while animating. */
 (function(){
   var sec=document.getElementById('awards');if(!sec)return;
-  var text=sec.querySelector('.aw-text'),imgs=[].slice.call(sec.querySelectorAll('.aw-img')),ticking=false;
+  var text=sec.querySelector('.aw-text'),imgs=[].slice.call(sec.querySelectorAll('.aw-img'));
+  var geo=[],top=0,total=1,cur=0,target=0,raf=0,listening=false,idle;
+  var flatMQ=window.matchMedia('(max-height:480px) and (orientation:landscape)');
+  function applyFlat(){text.style.opacity='';text.style.transform='';imgs.forEach(function(im){im.style.opacity='';im.style.transform=''})}
   var clamp=function(v){return Math.max(0,Math.min(1,v))},ease=function(t){return 1-Math.pow(1-t,3)};
-  var geo=[];
   function measure(){
-    var f=sec.querySelector('.aw-field').getBoundingClientRect();
+    var wasT=text.style.transform;
+    top=sec.getBoundingClientRect().top+window.scrollY;
+    total=Math.max(1,sec.offsetHeight-window.innerHeight);
+    var fw=sec.querySelector('.aw-field').offsetWidth,fh=sec.querySelector('.aw-field').offsetHeight;
     geo=imgs.map(function(im){
-      var w=im.offsetWidth,x=im.offsetLeft+w/2,y=im.offsetTop+w/2;
-      return {dx:(x/f.width-.5)*2.4*window.innerWidth,dy:(y/f.height-.5)*2.4*window.innerHeight};
+      var cx=im.offsetLeft+im.offsetWidth/2,cy=im.offsetTop+im.offsetHeight/2;
+      return {dx:(cx/fw-.5)*2.4*window.innerWidth,dy:(cy/fh-.5)*2.4*window.innerHeight};
     });
   }
-  function render(){
-    ticking=false;
-    var r=sec.getBoundingClientRect(),total=r.height-window.innerHeight;
-    var p=clamp(total>0?-r.top/total:0);
+  function render(p){
     var t=ease(clamp((p-.04)/.2));
-    text.style.opacity=t;text.style.transform='translateY('+((1-t)*24)+'px)';
-    imgs.forEach(function(im,i){
-      var q=ease(clamp((p-(.28+i*.07))/.3)),g=geo[i]||{dx:0,dy:0};
+    text.style.opacity=t;text.style.transform='translate3d(0,'+((1-t)*24)+'px,0)';
+    for(var i=0;i<imgs.length;i++){
+      var q=ease(clamp((p-(.28+i*.07))/.3)),g=geo[i],im=imgs[i];
       im.style.opacity=Math.min(1,q*2);
-      im.style.transform='translate('+(g.dx*(1-q))+'px,'+(g.dy*(1-q))+'px) scale('+(.8+.2*q)+')';
-    });
+      im.style.transform='translate3d('+(g.dx*(1-q))+'px,'+(g.dy*(1-q))+'px,0) scale('+(.8+.2*q)+')';
+    }
   }
-  function onScroll(){if(!ticking){ticking=true;requestAnimationFrame(render)}}
-  window.addEventListener('scroll',onScroll,{passive:true});
-  window.addEventListener('resize',function(){measure();render()});
-  window.addEventListener('load',function(){measure();render()});
-  measure();render();
+  function loop(){
+    cur+=(target-cur)*.16;
+    if(Math.abs(target-cur)<.0008)cur=target;
+    render(cur);
+    if(cur!==target){raf=requestAnimationFrame(loop)}
+    else{raf=0;clearTimeout(idle);idle=setTimeout(function(){sec.classList.remove('is-animating')},400)}
+  }
+  function onScroll(){
+    if(flatMQ.matches)return;
+    target=clamp((window.scrollY-top)/total);
+    sec.classList.add('is-animating');
+    if(!raf)raf=requestAnimationFrame(loop);
+  }
+  function listen(on){
+    if(flatMQ.matches)on=false;
+    if(on===listening)return;listening=on;
+    if(on){measure();onScroll();window.addEventListener('scroll',onScroll,{passive:true})}
+    else{window.removeEventListener('scroll',onScroll)}
+  }
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(en){listen(en[0].isIntersecting)},{rootMargin:'100% 0px 100% 0px'}).observe(sec);
+  }else{listen(true)}
+  window.addEventListener('resize',function(){measure();onScroll()});
+  window.addEventListener('load',function(){measure();onScroll()});
+  var onMQ=function(){if(flatMQ.matches){listen(false);applyFlat()}else{measure();onScroll()}};
+  if(flatMQ.addEventListener)flatMQ.addEventListener('change',onMQ);else flatMQ.addListener(onMQ);
+  if(flatMQ.matches){applyFlat()}else{measure();cur=target=clamp((window.scrollY-top)/total);render(cur)}
 })();
 </script>
 <script>
@@ -756,6 +793,16 @@ document.querySelectorAll('.roll[data-text]').forEach(function(r){
     });
   });
   document.addEventListener('click',function(e){if(!dd.contains(e.target))close(false)});
+})();
+</script>
+<script>
+/* Hero video only plays while the hero is on screen (saves decode work while scrolling the rest of the page) */
+(function(){
+  var v=document.querySelector('.hero-video'),h=document.querySelector('.hero');
+  if(!v||!h||!('IntersectionObserver' in window))return;
+  new IntersectionObserver(function(en){
+    if(en[0].isIntersecting){var p=v.play();if(p&&p.catch)p.catch(function(){})}else{v.pause()}
+  },{threshold:0}).observe(h);
 })();
 </script>
 </body>
